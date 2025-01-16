@@ -1,66 +1,60 @@
+import React from 'react';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { FiArrowRight } from 'react-icons/fi';
 
-const companies = [
-  {
-    name: 'TechCorp',
-    logo: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623',
-    description: 'Leading technology solutions provider'
-  },
-  {
-    name: 'InnovateLabs',
-    logo: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab',
-    description: 'Innovation-driven software company'
-  },
-  {
-    name: 'DigitalFirst',
-    logo: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72',
-    description: 'Digital transformation experts'
-  }
-];
+const TopCompanies = React.memo(() => {
+  const companies = [
+    {
+      name: 'TechCorp',
+      industry: 'Software Development',
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80'
+    },
+    {
+      name: 'DesignHub',
+      industry: 'UI/UX Design',
+      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80'
+    },
+    {
+      name: 'DataTech',
+      industry: 'Data Analytics',
+      image: 'https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&q=80'
+    }
+  ];
 
-const TopCompanies = () => {
   return (
-    <section className="bg-secondary py-20">
+    <section className="py-20 bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-12"
-        >
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Top IT Companies
-          </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
-            Partner with industry-leading companies and take your career to new heights.
-          </p>
+          >
+          <h2 className="text-3xl font-bold mb-4">Top IT Companies</h2>
+          <p className="text-gray-300">Partner with industry leaders</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
           {companies.map((company, index) => (
-            <motion.div
-              key={index}
+            <motion.div 
+              key={index} 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-primary rounded-lg overflow-hidden"
-            >
-              <div className="h-48 overflow-hidden">
-                <img
-                  src={company.logo}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="bg-gray-900 rounded-xl overflow-hidden group hover:transform hover:scale-105 transition-transform duration-300">
+              <div className="relative h-48">
+                <img 
+                  src={company.image} 
                   alt={company.name}
                   className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent"></div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">{company.name}</h3>
-                <p className="text-gray-300 mb-4">{company.description}</p>
-                <a
-                  href="#"
-                  className="inline-flex items-center text-accent hover:text-accent-light"
-                >
-                  View Opportunities <FiArrowRight className="ml-2" />
+                <h3 className="text-xl font-bold mb-2">{company.name}</h3>
+                <p className="text-gray-400 mb-4">{company.industry}</p>
+                <a href="#" className="text-blue-400 hover:text-blue-300 inline-flex items-center">
+                  View Profile <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
             </motion.div>
@@ -68,18 +62,18 @@ const TopCompanies = () => {
         </div>
 
         <div className="text-center">
-          <motion.button
+          <motion.button 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-md"
-          >
-            View All Companies
+            transition={{ duration: 0.4, delay: 0.4 }}
+            className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-medium inline-flex items-center"
+            >
+            View All Companies <ArrowRight className="ml-2 h-4 w-4" />
           </motion.button>
         </div>
       </div>
     </section>
   );
-};
+});
 
 export default TopCompanies;

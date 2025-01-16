@@ -1,54 +1,56 @@
+import React from 'react';
+import { Shield, Globe, Award, Users, Zap, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { FiBriefcase, FiDollarSign, FiUsers, FiAward, FiShield, FiTrendingUp } from 'react-icons/fi';
 
-const benefitsData = {
-  companies: [
-    { icon: FiUsers, title: 'Access Top Talent', description: 'Connect with verified professionals' },
-    { icon: FiDollarSign, title: 'Cost Effective', description: 'Flexible hiring options' },
-    { icon: FiShield, title: 'Quality Assured', description: 'Pre-vetted freelancers' }
-  ],
-  freelancers: [
-    { icon: FiBriefcase, title: 'Quality Projects', description: 'Work with leading companies' },
-    { icon: FiTrendingUp, title: 'Career Growth', description: 'Continuous learning opportunities' },
-    { icon: FiAward, title: 'Recognition', description: 'Build your professional brand' }
-  ]
-};
+const Benefits = React.memo(() => {
+  const benefits = {
+    companies: [
+      { icon: Users, title: 'Access Top Talent', description: 'Connect with verified professionals' },
+      { icon: Shield, title: 'Quality Guarantee', description: 'Risk-free hiring process' },
+      { icon: Clock, title: 'Fast Matching', description: 'Find the right talent quickly' }
+    ],
+    freelancers: [
+      { icon: Globe, title: 'Global Opportunities', description: 'Work with clients worldwide' },
+      { icon: Award, title: 'Skill Recognition', description: 'Get certified and verified' },
+      { icon: Zap, title: 'Instant Payments', description: 'Secure and fast transactions' }
+    ]
+  };
 
-const Benefits = () => {
   return (
-    <section className="bg-primary py-20">
+    <section className="py-20 bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
-        >
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Membership Benefits
-          </h2>
+          >
+          <h2 className="text-3xl font-bold text-center mb-16">Membership Benefits</h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
             Discover the advantages of joining our platform, whether you're a company
             looking to hire or a freelancer seeking opportunities.
           </p>
         </motion.div>
-
-        <div className="space-y-16">
+        <div className="grid md:grid-cols-2 gap-16">
           {/* Companies Benefits */}
           <div>
-            <h3 className="text-2xl font-bold text-white mb-8 text-center">For Companies</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {benefitsData.companies.map((benefit, index) => (
+            <h3 className="text-2xl font-bold mb-8 text-center">For Companies</h3>
+            <div className="space-y-8">
+              {benefits.companies.map((benefit, index) => (
                 <motion.div
-                  key={index}
+                  key={index} 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  className="bg-secondary rounded-lg p-6"
-                >
-                  <benefit.icon className="text-accent text-3xl mb-4" />
-                  <h4 className="text-xl font-bold text-white mb-2">{benefit.title}</h4>
-                  <p className="text-gray-300">{benefit.description}</p>
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="flex items-start"
+                  >
+                  <div className="flex-shrink-0">
+                    <benefit.icon className="h-8 w-8 text-blue-400" />
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="text-xl font-semibold mb-2">{benefit.title}</h4>
+                    <p className="text-gray-400">{benefit.description}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -56,19 +58,22 @@ const Benefits = () => {
 
           {/* Freelancers Benefits */}
           <div>
-            <h3 className="text-2xl font-bold text-white mb-8 text-center">For Freelancers</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {benefitsData.freelancers.map((benefit, index) => (
-                <motion.div
-                  key={index}
+            <h3 className="text-2xl font-bold mb-8 text-center">For Freelancers</h3>
+            <div className="space-y-8">
+              {benefits.freelancers.map((benefit, index) => (
+                <motion.div 
+                  key={index} 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  className="bg-secondary rounded-lg p-6"
-                >
-                  <benefit.icon className="text-accent text-3xl mb-4" />
-                  <h4 className="text-xl font-bold text-white mb-2">{benefit.title}</h4>
-                  <p className="text-gray-300">{benefit.description}</p>
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="flex items-start">
+                  <div className="flex-shrink-0">
+                    <benefit.icon className="h-8 w-8 text-blue-400" />
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="text-xl font-semibold mb-2">{benefit.title}</h4>
+                    <p className="text-gray-400">{benefit.description}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -77,6 +82,6 @@ const Benefits = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Benefits;

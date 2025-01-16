@@ -1,27 +1,26 @@
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import WhoWeAreFor from '../components/WhoWeAreFor';
-import FreelanceProgram from '../components/FreelanceProgram';
-import STPSection from '../components/STPSection';
-import Benefits from '../components/Benefits';
-import TopCompanies from '../components/TopCompanies';
-import TopFreelancers from '../components/TopFreelancers';
-import SuccessStories from '../components/SuccessStories';
-import Footer from '../components/Footer';
+import React, { Suspense } from 'react';
+const Hero = React.lazy(() => import('../components/Hero'));
+const WhoWeAreFor = React.lazy(() => import('../components/WhoWeAreFor'));
+const FreelanceProgram = React.lazy(() => import('../components/FreelanceProgram'));
+const STPSection = React.lazy(() => import('../components/STPSection'));
+const Benefits = React.lazy(() => import('../components/Benefits'));
+const TopCompanies = React.lazy(() => import('../components/TopCompanies'));
+const TopFreelancers = React.lazy(() => import('../components/TopFreelancers'));
+const SuccessStories = React.lazy(() => import('../components/SuccessStories'));
 
 function Home() {
   return (
     <div className="min-h-screen bg-primary">
-      <Navbar />
-      <Hero />
-      <WhoWeAreFor />
-      <FreelanceProgram />
-      <STPSection />
-      <Benefits />
-      <TopCompanies />
-      <TopFreelancers />
-      <SuccessStories />
-      <Footer />
+      <Suspense fallback={<div>Loading...</div>}> 
+        <Hero />
+        <WhoWeAreFor />
+        <FreelanceProgram />
+        <STPSection />
+        <Benefits />
+        <TopCompanies />
+        <TopFreelancers />
+        <SuccessStories />
+      </Suspense>
     </div>
   );
 }

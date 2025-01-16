@@ -1,292 +1,243 @@
-import { useState } from 'react';
-import { FiEdit2, FiMapPin, FiBriefcase, FiMail, FiStar } from 'react-icons/fi';
-import Navbar from '../components/Navbar';
-import ProfileTabs from '../components/ProfileTabs';
+import React, { useState } from 'react';
+import { User, Briefcase, Link as LinkIcon, Settings, Users, Star, MapPin, Mail, Phone, Globe } from 'lucide-react';
 
-// Mock data for different user types
-const mockUsers = {
-  freelancer: {
-    id: 1,
-    type: 'Freelancer',
-    name: 'John Doe',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e',
-    bio: 'Full stack developer with 5+ years of experience',
+const ProfilePage = () => {
+  const [activeTab, setActiveTab] = useState('overview');
+  
+  // Mock user data - in a real app, this would come from your backend
+  const user = {
+    type: 'freelancer', // or 'company' or 'internee'
+    name: 'Sarah Johnson',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80',
+    title: 'Senior Full Stack Developer',
     location: 'San Francisco, CA',
-    email: 'john@example.com',
-    rating: 4.8,
-    skills: ['React', 'Node.js', 'TypeScript', 'MongoDB'],
+    email: 'sarah@example.com',
+    phone: '+1 (555) 123-4567',
+    website: 'www.sarahjohnson.dev',
+    bio: 'Passionate full-stack developer with 5+ years of experience in building scalable web applications.',
+    skills: ['React', 'Node.js', 'TypeScript', 'MongoDB', 'AWS'],
+    rating: 4.9,
+    completedProjects: 45,
+    portfolio: [
+      {
+        id: 1,
+        title: 'E-commerce Platform',
+        description: 'Built a full-featured e-commerce platform using MERN stack.',
+        image: 'https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80',
+        link: '#'
+      },
+      // Add more portfolio items
+    ],
     workHistory: [
       {
+        id: 1,
         company: 'TechCorp',
         role: 'Senior Developer',
         duration: '2020 - Present',
-        description: 'Led development of enterprise applications'
-      }
-    ],
-    portfolio: [
-      {
-        title: 'E-commerce Platform',
-        description: 'Built a full-stack e-commerce solution',
-        link: '#'
-      }
-    ],
-    connections: [
-      {
-        name: 'TechCorp',
-        type: 'Client',
-        image: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623'
-      }
+        description: 'Led development of multiple high-impact projects.'
+      },
+      // Add more work history items
     ]
-  },
-  company: {
-    id: 2,
-    type: 'Company',
-    name: 'TechCorp Solutions',
-    image: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623',
-    description: 'Leading provider of enterprise software solutions',
-    location: 'San Francisco, CA',
-    email: 'contact@techcorp.com',
-    industry: 'Software Development',
-    postings: [
-      {
-        title: 'Senior Frontend Developer',
-        type: 'Full-time',
-        location: 'San Francisco, CA'
-      }
-    ],
-    connections: [
-      {
-        name: 'John Doe',
-        type: 'Freelancer',
-        image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e'
-      }
-    ]
-  },
-  internee: {
-    id: 3,
-    type: 'Internee',
-    name: 'Sarah Wilson',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330',
-    bio: 'Computer Science student passionate about web development',
-    location: 'Boston, MA',
-    email: 'sarah@example.com',
-    education: {
-      university: 'MIT',
-      degree: 'BS Computer Science',
-      year: '3rd Year'
-    },
-    skills: ['JavaScript', 'React', 'Python'],
-    applications: [
-      {
-        company: 'TechCorp',
-        position: 'Frontend Developer Intern',
-        status: 'Applied',
-        date: '2024-01-15'
-      }
-    ]
-  }
-};
-
-const ProfilePage = () => {
-  const [activeTab, setActiveTab] = useState('Overview');
-  // For demo, we'll use the freelancer profile. In a real app, this would be determined by the route/user type
-  const user = mockUsers.freelancer;
-  
-  const getTabs = (userType) => {
-    const commonTabs = ['Overview', 'Settings'];
-    switch (userType) {
-      case 'Freelancer':
-        return [...commonTabs.slice(0, -1), 'Portfolio', 'Connections', commonTabs[1]];
-      case 'Company':
-        return [...commonTabs.slice(0, -1), 'Postings', 'Connections', commonTabs[1]];
-      case 'Internee':
-        return [...commonTabs.slice(0, -1), 'Applications', commonTabs[1]];
-      default:
-        return commonTabs;
-    }
   };
 
   const renderTabContent = () => {
     switch (activeTab) {
-      case 'Overview':
+      case 'overview':
         return (
-          <div className="space-y-6">
-            {user.type === 'Freelancer' && (
-              <>
-                <div className="bg-secondary rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">Skills</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {user.skills.map((skill) => (
-                      <span key={skill} className="px-3 py-1 bg-primary rounded-full text-accent">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="bg-secondary rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">Work History</h3>
-                  {user.workHistory.map((work, index) => (
-                    <div key={index} className="mb-4">
-                      <h4 className="text-white font-medium">{work.role}</h4>
-                      <p className="text-accent">{work.company}</p>
-                      <p className="text-gray-300 text-sm">{work.duration}</p>
-                      <p className="text-gray-300 mt-2">{work.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
-            {user.type === 'Company' && (
-              <div className="bg-secondary rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-white mb-4">Company Information</h3>
-                <p className="text-gray-300">{user.description}</p>
-                <div className="mt-4">
-                  <p className="text-gray-300">
-                    <FiBriefcase className="inline mr-2" />
-                    {user.industry}
-                  </p>
-                </div>
+          <div className="space-y-8">
+            {/* Bio Section */}
+            <div className="bg-gray-800 rounded-lg p-6">
+              <h3 className="text-xl font-semibold mb-4">About</h3>
+              <p className="text-gray-400">{user.bio}</p>
+            </div>
+
+            {/* Skills Section */}
+            <div className="bg-gray-800 rounded-lg p-6">
+              <h3 className="text-xl font-semibold mb-4">Skills</h3>
+              <div className="flex flex-wrap gap-2">
+                {user.skills.map((skill, index) => (
+                  <span
+                    key={index}
+                    className="bg-gray-700 px-3 py-1 rounded-full text-sm"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
-            )}
-            {user.type === 'Internee' && (
-              <>
-                <div className="bg-secondary rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">Education</h3>
-                  <p className="text-white">{user.education.university}</p>
-                  <p className="text-gray-300">{user.education.degree}</p>
-                  <p className="text-gray-300">{user.education.year}</p>
-                </div>
-                <div className="bg-secondary rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">Skills</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {user.skills.map((skill) => (
-                      <span key={skill} className="px-3 py-1 bg-primary rounded-full text-accent">
-                        {skill}
-                      </span>
-                    ))}
+            </div>
+
+            {/* Work History */}
+            <div className="bg-gray-800 rounded-lg p-6">
+              <h3 className="text-xl font-semibold mb-4">Work History</h3>
+              <div className="space-y-6">
+                {user.workHistory.map((work) => (
+                  <div key={work.id} className="border-l-2 border-blue-600 pl-4">
+                    <h4 className="font-semibold">{work.role}</h4>
+                    <p className="text-blue-400">{work.company}</p>
+                    <p className="text-sm text-gray-400">{work.duration}</p>
+                    <p className="mt-2 text-gray-400">{work.description}</p>
                   </div>
-                </div>
-              </>
-            )}
+                ))}
+              </div>
+            </div>
           </div>
         );
-      case 'Portfolio':
+
+      case 'portfolio':
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {user.portfolio.map((project, index) => (
-              <div key={index} className="bg-secondary rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-300 mb-4">{project.description}</p>
-                <a href={project.link} className="text-accent hover:text-accent-light">
-                  View Project →
-                </a>
-              </div>
-            ))}
-          </div>
-        );
-      case 'Connections':
-        return (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {user.connections.map((connection, index) => (
-              <div key={index} className="bg-secondary rounded-lg p-6 flex items-center">
+            {user.portfolio.map((project) => (
+              <div key={project.id} className="bg-gray-800 rounded-lg overflow-hidden">
                 <img
-                  src={connection.image}
-                  alt={connection.name}
-                  className="w-12 h-12 rounded-full object-cover"
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-48 object-cover"
                 />
-                <div className="ml-4">
-                  <h3 className="text-white font-medium">{connection.name}</h3>
-                  <p className="text-gray-300 text-sm">{connection.type}</p>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                  <p className="text-gray-400 mb-4">{project.description}</p>
+                  <a
+                    href={project.link}
+                    className="text-blue-400 hover:text-blue-300 inline-flex items-center"
+                  >
+                    View Project <LinkIcon className="ml-2 h-4 w-4" />
+                  </a>
                 </div>
               </div>
             ))}
           </div>
         );
-      case 'Postings':
+
+      case 'connections':
         return (
-          <div className="space-y-6">
-            {user.postings.map((posting, index) => (
-              <div key={index} className="bg-secondary rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-white mb-2">{posting.title}</h3>
-                <p className="text-accent mb-2">{posting.type}</p>
-                <p className="text-gray-300">
-                  <FiMapPin className="inline mr-2" />
-                  {posting.location}
-                </p>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Add connection cards here */}
           </div>
         );
-      case 'Applications':
+
+      case 'settings':
         return (
-          <div className="space-y-6">
-            {user.applications.map((application, index) => (
-              <div key={index} className="bg-secondary rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-white mb-2">{application.position}</h3>
-                <p className="text-accent mb-2">{application.company}</p>
-                <div className="flex justify-between items-center mt-4">
-                  <span className="text-gray-300">Applied: {application.date}</span>
-                  <span className="px-3 py-1 bg-primary rounded-full text-accent">
-                    {application.status}
-                  </span>
-                </div>
-              </div>
-            ))}
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-semibold mb-6">Profile Settings</h3>
+            {/* Add settings form here */}
           </div>
         );
+
       default:
         return null;
     }
   };
 
   return (
-    <div className="min-h-screen bg-primary">
-      <Navbar />
-      
-      <div className="pt-24 pb-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Profile Header */}
-          <div className="bg-secondary rounded-lg p-6 mb-8">
-            <div className="flex items-start justify-between">
-              <div className="flex items-center">
-                <img
-                  src={user.image}
-                  alt={user.name}
-                  className="w-24 h-24 rounded-full object-cover"
-                />
-                <div className="ml-6">
-                  <h1 className="text-2xl font-bold text-white">{user.name}</h1>
-                  <p className="text-accent">{user.type}</p>
-                  <div className="flex items-center mt-2 text-gray-300">
-                    <FiMapPin className="mr-2" />
-                    {user.location}
-                  </div>
-                  {user.type === 'Freelancer' && (
-                    <div className="flex items-center mt-2">
-                      <FiStar className="text-yellow-400 mr-1" />
-                      <span className="text-white">{user.rating}</span>
-                    </div>
-                  )}
+    <div className="min-h-screen bg-gray-900 pt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Profile Header */}
+        <div className="bg-gray-800 rounded-lg p-6 mb-8">
+          <div className="flex flex-col md:flex-row items-center md:items-start">
+            <img
+              src={user.image}
+              alt={user.name}
+              className="w-32 h-32 rounded-full object-cover mb-4 md:mb-0 md:mr-6"
+            />
+            <div className="text-center md:text-left">
+              <h1 className="text-2xl font-bold mb-2">{user.name}</h1>
+              <p className="text-gray-400 mb-4">{user.title}</p>
+              
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 text-gray-400 mb-4">
+                <div className="flex items-center">
+                  <MapPin className="h-4 w-4 mr-1" />
+                  {user.location}
+                </div>
+                <div className="flex items-center">
+                  <Star className="h-4 w-4 mr-1 text-yellow-400" />
+                  {user.rating} ({user.completedProjects} projects)
                 </div>
               </div>
-              <button className="bg-accent hover:bg-accent-light text-white px-4 py-2 rounded-md flex items-center">
-                <FiEdit2 className="mr-2" />
-                Edit Profile
-              </button>
+
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm">
+                <a href={`mailto:${user.email}`} className="flex items-center text-gray-400 hover:text-blue-400">
+                  <Mail className="h-4 w-4 mr-1" />
+                  {user.email}
+                </a>
+                <a href={`tel:${user.phone}`} className="flex items-center text-gray-400 hover:text-blue-400">
+                  <Phone className="h-4 w-4 mr-1" />
+                  {user.phone}
+                </a>
+                <a href={`https://${user.website}`} className="flex items-center text-gray-400 hover:text-blue-400">
+                  <Globe className="h-4 w-4 mr-1" />
+                  {user.website}
+                </a>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Profile Navigation */}
-          <ProfileTabs
-            tabs={getTabs(user.type)}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
-
-          {/* Tab Content */}
-          <div className="mt-8">
-            {renderTabContent()}
+        {/* Profile Tabs */}
+        <div className="mb-8">
+          <div className="border-b border-gray-700">
+            <nav className="flex space-x-8">
+              <button
+                onClick={() => setActiveTab('overview')}
+                className={`py-4 px-1 relative ${
+                  activeTab === 'overview'
+                    ? 'text-blue-400 border-b-2 border-blue-400'
+                    : 'text-gray-400 hover:text-gray-300'
+                }`}
+              >
+                <div className="flex items-center">
+                  <User className="h-5 w-5 mr-2" />
+                  Overview
+                </div>
+              </button>
+              
+              <button
+                onClick={() => setActiveTab('portfolio')}
+                className={`py-4 px-1 relative ${
+                  activeTab === 'portfolio'
+                    ? 'text-blue-400 border-b-2 border-blue-400'
+                    : 'text-gray-400 hover:text-gray-300'
+                }`}
+              >
+                <div className="flex items-center">
+                  <Briefcase className="h-5 w-5 mr-2" />
+                  Portfolio
+                </div>
+              </button>
+              
+              <button
+                onClick={() => setActiveTab('connections')}
+                className={`py-4 px-1 relative ${
+                  activeTab === 'connections'
+                    ? 'text-blue-400 border-b-2 border-blue-400'
+                    : 'text-gray-400 hover:text-gray-300'
+                }`}
+              >
+                <div className="flex items-center">
+                  <Users className="h-5 w-5 mr-2" />
+                  Connections
+                </div>
+              </button>
+              
+              <button
+                onClick={() => setActiveTab('settings')}
+                className={`py-4 px-1 relative ${
+                  activeTab === 'settings'
+                    ? 'text-blue-400 border-b-2 border-blue-400'
+                    : 'text-gray-400 hover:text-gray-300'
+                }`}
+              >
+                <div className="flex items-center">
+                  <Settings className="h-5 w-5 mr-2" />
+                  Settings
+                </div>
+              </button>
+            </nav>
           </div>
+        </div>
+
+        {/* Tab Content */}
+        <div className="mb-12">
+          {renderTabContent()}
         </div>
       </div>
     </div>

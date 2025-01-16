@@ -1,92 +1,104 @@
-import { useState } from 'react';
-import { FiSearch, FiMapPin, FiBriefcase } from 'react-icons/fi';
-import Navbar from '../components/Navbar';
-
-const companies = [
-  {
-    id: 1,
-    name: 'TechCorp Solutions',
-    logo: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623',
-    industry: 'Software Development',
-    location: 'San Francisco, CA',
-    description: 'Leading provider of enterprise software solutions with a focus on AI and machine learning.'
-  },
-  {
-    id: 2,
-    name: 'DesignLabs Pro',
-    logo: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab',
-    industry: 'Design & Creative',
-    location: 'New York, NY',
-    description: 'Award-winning design agency specializing in digital products and brand experiences.'
-  },
-  {
-    id: 3,
-    name: 'DataTech Analytics',
-    logo: 'https://images.unsplash.com/photo-1497366216548-37526070297c',
-    industry: 'Data Analytics',
-    location: 'Boston, MA',
-    description: 'Data-driven company providing advanced analytics solutions for businesses worldwide.'
-  }
-];
+import React from 'react';
+import { Search, MapPin, Users, ExternalLink } from 'lucide-react';
 
 const CompaniesPage = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const companies = [
+    {
+      id: 1,
+      name: 'TechCorp',
+      logo: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80',
+      industry: 'Software Development',
+      location: 'San Francisco, CA',
+      employees: '1000+',
+      description: 'Leading software development company specializing in enterprise solutions.'
+    },
+    {
+      id: 2,
+      name: 'DesignHub',
+      logo: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80',
+      industry: 'Design & Creative',
+      location: 'New York, NY',
+      employees: '500+',
+      description: 'Award-winning design agency creating beautiful digital experiences.'
+    },
+    {
+      id: 3,
+      name: 'DesignHub',
+      logo: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80',
+      industry: 'Design & Creative',
+      location: 'New York, NY',
+      employees: '500+',
+      description: 'Award-winning design agency creating beautiful digital experiences.'
+    },
+    {
+      id: 4,
+      name: 'TechCorp',
+      logo: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80',
+      industry: 'Software Development',
+      location: 'San Francisco, CA',
+      employees: '1000+',
+      description: 'Leading software development company specializing in enterprise solutions.'
+    }
+    // Add more companies as needed
+  ];
 
   return (
-    <div className="min-h-screen bg-primary">
-      <Navbar />
-      
-      {/* Search Section */}
-      <div className="pt-24 pb-12 bg-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search by company name, industry, or location..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-3 pl-12 bg-primary border border-gray-700 rounded-lg text-white focus:outline-none focus:border-accent"
-            />
-            <FiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-          </div>
+    <div className="min-h-screen bg-gray-900 pt-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Search Bar */}
+        <div className="relative w-full md:w-96 mb-8">
+          <input
+            type="text"
+            placeholder="Search companies..."
+            className="w-full bg-gray-800 border border-gray-700 rounded-lg py-2 px-4 pl-10 focus:outline-none focus:border-blue-500"
+          />
+          <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
         </div>
-      </div>
 
-      {/* Companies Grid */}
-      <div className="py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {companies.map((company) => (
-              <div key={company.id} className="bg-secondary rounded-lg overflow-hidden">
-                <div className="p-6">
-                  <div className="flex items-center mb-4">
-                    <img
-                      src={company.logo}
-                      alt={company.name}
-                      className="w-16 h-16 rounded-lg object-cover"
-                    />
-                    <div className="ml-4">
-                      <h3 className="text-xl font-semibold text-white">{company.name}</h3>
-                      <div className="flex items-center text-gray-300">
-                        <FiBriefcase className="mr-1" />
-                        <span>{company.industry}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mb-4">
-                    <div className="flex items-center text-gray-300 mb-3">
-                      <FiMapPin className="mr-1" />
-                      <span>{company.location}</span>
-                    </div>
-                    <p className="text-gray-300">{company.description}</p>
-                  </div>
-                  <button className="w-full bg-accent hover:bg-accent-light text-white py-2 rounded-md transition-colors">
-                    View Profile
-                  </button>
-                </div>
+        {/* Companies Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {companies.map((company) => (
+            <div
+              key={company.id}
+              className="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
+            >
+              <div className="relative h-48">
+                <img
+                  src={company.logo}
+                  alt={company.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent"></div>
               </div>
-            ))}
-          </div>
+              
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">{company.name}</h3>
+                <div className="flex items-center text-gray-400 mb-4">
+                  <span className="bg-gray-700 px-3 py-1 rounded-full text-sm">
+                    {company.industry}
+                  </span>
+                </div>
+                
+                <div className="space-y-2 mb-4">
+                  <div className="flex items-center text-gray-400">
+                    <MapPin className="h-4 w-4 mr-2" />
+                    <span>{company.location}</span>
+                  </div>
+                  <div className="flex items-center text-gray-400">
+                    <Users className="h-4 w-4 mr-2" />
+                    <span>{company.employees}</span>
+                  </div>
+                </div>
+                
+                <p className="text-gray-400 mb-6">{company.description}</p>
+                
+                <button className="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center">
+                  View Profile
+                  <ExternalLink className="h-4 w-4 ml-2" />
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
