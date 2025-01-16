@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const TopFreelancers = React.memo(() => {
+const TopFreelancers = () => {
   const freelancers = [
     {
       name: 'Sarah Johnson',
@@ -79,6 +79,6 @@ const TopFreelancers = React.memo(() => {
       </div>
     </section>
   );
-});
+};
 
 export default TopFreelancers;

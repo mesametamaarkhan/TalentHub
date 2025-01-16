@@ -2,7 +2,7 @@ import React from 'react';
 import { CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const FreelanceProgram = React.memo(() => {
+const FreelanceProgram = () => {
   const features = [
     'Access to global opportunities',
     'Secure payment protection',
@@ -70,6 +70,6 @@ const FreelanceProgram = React.memo(() => {
       </div>
     </section>
   );
-});
+};
 
 export default FreelanceProgram;

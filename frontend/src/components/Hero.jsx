@@ -2,7 +2,7 @@ import React from 'react';
 import { Users, Briefcase, Trophy } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const Hero = React.memo(() => {
+const Hero = () => {
   const stats = [
     { icon: Users, title: '10K+', description: 'Active Freelancers' },
     { icon: Briefcase, title: '5K+', description: 'Companies Hiring' },
@@ -15,7 +15,8 @@ const Hero = React.memo(() => {
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80")',
+          backgroundImage: 'url("/assets/banner.jpg")'
+          // backgroundImage: 'url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80")',
         }}
       >
         <div className="absolute inset-0 bg-gray-900/80 backdrop-blur-sm"></div>
@@ -51,6 +52,6 @@ const Hero = React.memo(() => {
       </div>
     </div>
   );
-});
+};
 
 export default Hero;

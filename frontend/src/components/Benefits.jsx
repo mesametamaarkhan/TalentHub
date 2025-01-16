@@ -2,7 +2,7 @@ import React from 'react';
 import { Shield, Globe, Award, Users, Zap, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const Benefits = React.memo(() => {
+const Benefits = () => {
   const benefits = {
     companies: [
       { icon: Users, title: 'Access Top Talent', description: 'Connect with verified professionals' },
@@ -82,6 +82,6 @@ const Benefits = React.memo(() => {
       </div>
     </section>
   );
-});
+};
 
 export default Benefits;

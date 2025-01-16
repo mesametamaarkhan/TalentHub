@@ -1,7 +1,7 @@
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 
-const Footer = React.memo(() => {
+const Footer = () => {
   const links = {
     company: ['About Us', 'Careers', 'Press', 'Blog'],
     solutions: ['For Freelancers', 'For Companies', 'For Students', 'Enterprise'],
@@ -57,6 +57,6 @@ const Footer = React.memo(() => {
       </div>
     </footer>
   );
-});
+};
 
 export default Footer;

@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const TopCompanies = React.memo(() => {
+const TopCompanies = () => {
   const companies = [
     {
       name: 'TechCorp',
@@ -74,6 +74,6 @@ const TopCompanies = React.memo(() => {
       </div>
     </section>
   );
-});
+};
 
 export default TopCompanies;

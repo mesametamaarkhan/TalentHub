@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, Quote } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const SuccessStories = React.memo(() => {
+const SuccessStories = () => {
   const stories = [
     {
       name: 'David Wilson',
@@ -81,6 +81,6 @@ const SuccessStories = React.memo(() => {
       </div>
     </section>
   );
-});
+};
 
 export default SuccessStories;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
-const STPSection = React.memo(() => {
+const STPSection = () => {
   const programs = [
     {
       title: 'Software Development',
@@ -55,6 +55,6 @@ const STPSection = React.memo(() => {
       </div>
     </section>
   );
-});
+};
 
 export default STPSection;
