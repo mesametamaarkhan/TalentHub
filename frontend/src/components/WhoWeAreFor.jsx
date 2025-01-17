@@ -47,7 +47,7 @@ const WhoWeAreFor = () => {
               </div>
               <div className="relative p-8 h-96 flex flex-col justify-end">
                 <h3 className="text-2xl font-bold mb-2 text-white">{card.title}</h3>
-                <p className="text-white-300 mb-4">{card.description}</p>
+                <p className="text-white mb-4">{card.description}</p>
                 <a 
                   href={card.link}
                   className="inline-flex items-center text-green-400 hover:text-green-400"

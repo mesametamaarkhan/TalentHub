@@ -61,7 +61,7 @@ const SuccessStories = () => {
                   <p className="text-sm text-green-500">{story.company}</p>
                 </div>
               </div>
-              <p className="text-gray-300 italic mb-4">"{story.quote}"</p>
+              <p className="text-white italic mb-4">"{story.quote}"</p>
               <a href="#" className="text-green-500 hover:text-green-400 inline-flex items-center">
                 Read Full Story <ArrowRight className="ml-2 h-4 w-4" />
               </a>

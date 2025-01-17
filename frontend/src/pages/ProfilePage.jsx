@@ -46,19 +46,19 @@ const ProfilePage = () => {
         return (
           <div className="space-y-8">
             {/* Bio Section */}
-            <div className="bg-gray-800 rounded-lg p-6">
+            <div className="bg-black rounded-lg p-6">
               <h3 className="text-xl font-semibold mb-4">About</h3>
-              <p className="text-gray-400">{user.bio}</p>
+              <p className="text-white">{user.bio}</p>
             </div>
 
             {/* Skills Section */}
-            <div className="bg-gray-800 rounded-lg p-6">
+            <div className="bg-black rounded-lg p-6">
               <h3 className="text-xl font-semibold mb-4">Skills</h3>
               <div className="flex flex-wrap gap-2">
                 {user.skills.map((skill, index) => (
                   <span
                     key={index}
-                    className="bg-gray-700 px-3 py-1 rounded-full text-sm"
+                    className="bg-green-600 px-3 py-1 rounded-full text-sm"
                   >
                     {skill}
                   </span>
@@ -67,15 +67,15 @@ const ProfilePage = () => {
             </div>
 
             {/* Work History */}
-            <div className="bg-gray-800 rounded-lg p-6">
+            <div className="bg-black rounded-lg p-6">
               <h3 className="text-xl font-semibold mb-4">Work History</h3>
               <div className="space-y-6">
                 {user.workHistory.map((work) => (
-                  <div key={work.id} className="border-l-2 border-blue-600 pl-4">
+                  <div key={work.id} className="border-l-2 border-green-600 pl-4">
                     <h4 className="font-semibold">{work.role}</h4>
-                    <p className="text-blue-400">{work.company}</p>
-                    <p className="text-sm text-gray-400">{work.duration}</p>
-                    <p className="mt-2 text-gray-400">{work.description}</p>
+                    <p className="text-green-400">{work.company}</p>
+                    <p className="text-sm text-white">{work.duration}</p>
+                    <p className="mt-2 text-white">{work.description}</p>
                   </div>
                 ))}
               </div>
@@ -87,7 +87,7 @@ const ProfilePage = () => {
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {user.portfolio.map((project) => (
-              <div key={project.id} className="bg-gray-800 rounded-lg overflow-hidden">
+              <div key={project.id} className="bg-black rounded-lg overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -95,10 +95,10 @@ const ProfilePage = () => {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-gray-400 mb-4">{project.description}</p>
+                  <p className="text-white mb-4">{project.description}</p>
                   <a
                     href={project.link}
-                    className="text-blue-400 hover:text-blue-300 inline-flex items-center"
+                    className="text-green-400 hover:text-green-300 inline-flex items-center"
                   >
                     View Project <LinkIcon className="ml-2 h-4 w-4" />
                   </a>
@@ -117,7 +117,7 @@ const ProfilePage = () => {
 
       case 'settings':
         return (
-          <div className="bg-gray-800 rounded-lg p-6">
+          <div className="bg-black rounded-lg p-6">
             <h3 className="text-xl font-semibold mb-6">Profile Settings</h3>
             {/* Add settings form here */}
           </div>
@@ -129,10 +129,10 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 pt-20">
+    <div className="min-h-screen bg-dark-greenish-gray pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Profile Header */}
-        <div className="bg-gray-800 rounded-lg p-6 mb-8">
+        <div className="bg-black rounded-lg p-6 mb-8">
           <div className="flex flex-col md:flex-row items-center md:items-start">
             <img
               src={user.image}
@@ -141,9 +141,9 @@ const ProfilePage = () => {
             />
             <div className="text-center md:text-left">
               <h1 className="text-2xl font-bold mb-2">{user.name}</h1>
-              <p className="text-gray-400 mb-4">{user.title}</p>
+              <p className="text-white mb-4">{user.title}</p>
               
-              <div className="flex flex-wrap justify-center md:justify-start gap-4 text-gray-400 mb-4">
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 text-white mb-4">
                 <div className="flex items-center">
                   <MapPin className="h-4 w-4 mr-1" />
                   {user.location}
@@ -155,15 +155,15 @@ const ProfilePage = () => {
               </div>
 
               <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm">
-                <a href={`mailto:${user.email}`} className="flex items-center text-gray-400 hover:text-blue-400">
+                <a href={`mailto:${user.email}`} className="flex items-center text-white hover:text-green-400">
                   <Mail className="h-4 w-4 mr-1" />
                   {user.email}
                 </a>
-                <a href={`tel:${user.phone}`} className="flex items-center text-gray-400 hover:text-blue-400">
+                <a href={`tel:${user.phone}`} className="flex items-center text-white hover:text-green-400">
                   <Phone className="h-4 w-4 mr-1" />
                   {user.phone}
                 </a>
-                <a href={`https://${user.website}`} className="flex items-center text-gray-400 hover:text-blue-400">
+                <a href={`https://${user.website}`} className="flex items-center text-white hover:text-green-400">
                   <Globe className="h-4 w-4 mr-1" />
                   {user.website}
                 </a>
@@ -180,7 +180,7 @@ const ProfilePage = () => {
                 onClick={() => setActiveTab('overview')}
                 className={`py-4 px-1 relative ${
                   activeTab === 'overview'
-                    ? 'text-blue-400 border-b-2 border-blue-400'
+                    ? 'text-green-400 border-b-2 border-green-400'
                     : 'text-gray-400 hover:text-gray-300'
                 }`}
               >
@@ -194,7 +194,7 @@ const ProfilePage = () => {
                 onClick={() => setActiveTab('portfolio')}
                 className={`py-4 px-1 relative ${
                   activeTab === 'portfolio'
-                    ? 'text-blue-400 border-b-2 border-blue-400'
+                    ? 'text-green-400 border-b-2 border-green-400'
                     : 'text-gray-400 hover:text-gray-300'
                 }`}
               >
@@ -208,7 +208,7 @@ const ProfilePage = () => {
                 onClick={() => setActiveTab('connections')}
                 className={`py-4 px-1 relative ${
                   activeTab === 'connections'
-                    ? 'text-blue-400 border-b-2 border-blue-400'
+                    ? 'text-green-400 border-b-2 border-green-400'
                     : 'text-gray-400 hover:text-gray-300'
                 }`}
               >
@@ -222,7 +222,7 @@ const ProfilePage = () => {
                 onClick={() => setActiveTab('settings')}
                 className={`py-4 px-1 relative ${
                   activeTab === 'settings'
-                    ? 'text-blue-400 border-b-2 border-blue-400'
+                    ? 'text-green-400 border-b-2 border-green-400'
                     : 'text-gray-400 hover:text-gray-300'
                 }`}
               >

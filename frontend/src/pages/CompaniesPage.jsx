@@ -49,16 +49,16 @@ const CompaniesPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 pt-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-dark-greenish-gray pt-20 px-4 sm:px-6 lg:px-8 pb-10">
       <div className="max-w-7xl mx-auto">
         {/* Search Bar */}
         <div className="relative w-full md:w-96 mb-8">
           <input
             type="text"
             placeholder="Search companies..."
-            className="w-full bg-gray-800 border border-gray-700 rounded-lg py-2 px-4 pl-10 focus:outline-none focus:border-blue-500"
+            className="w-full bg-black border border-black rounded-lg py-2 px-4 pl-10 focus:outline-none focus:border-black"
           />
-          <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+          <Search className="absolute left-3 top-2.5 h-5 w-5 text-white" />
         </div>
 
         {/* Companies Grid */}
@@ -66,7 +66,7 @@ const CompaniesPage = () => {
           {companies.map((company) => (
             <div
               key={company.id}
-              className="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
+              className="bg-black rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
               onClick={() => handleNavigate(companies.id)}
             >
               <div className="relative h-48">
@@ -75,36 +75,36 @@ const CompaniesPage = () => {
                   alt={company.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black-900 via-transparent"></div>
               </div>
               
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">{company.name}</h3>
-                <div className="flex items-center text-gray-400 mb-4">
-                  <span className="bg-gray-700 px-3 py-1 rounded-full text-sm">
+                <div className="flex items-center text-white mb-4">
+                  <span className="bg-green-700 px-3 py-1 rounded-full text-sm">
                     {company.industry}
                   </span>
                 </div>
                 
                 <div className="space-y-2 mb-4">
-                  <div className="flex items-center text-gray-400">
+                  <div className="flex items-center text-white">
                     <MapPin className="h-4 w-4 mr-2" />
                     <span>{company.location}</span>
                   </div>
-                  <div className="flex items-center text-gray-400">
+                  <div className="flex items-center text-white">
                     <Users className="h-4 w-4 mr-2" />
                     <span>{company.employees}</span>
                   </div>
                 </div>
                 
-                <p className="text-gray-400 mb-6">{company.description}</p>
+                <p className="text-white mb-6">{company.description}</p>
                 
                 <button 
                   onClick={(e) => {
                       e.stopPropagation();
                       handleNavigate(companies.id);
                   }}
-                  className="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center">
+                  className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center">
                   View Profile
                   <ExternalLink className="h-4 w-4 ml-2" />
                 </button>

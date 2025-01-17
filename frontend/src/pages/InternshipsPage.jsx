@@ -38,7 +38,7 @@ const InternshipsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 pt-20">
+    <div className="min-h-screen bg-dark-greenish-gray pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Search and Filter Toggle */}
         <div className="flex justify-between items-center mb-8">
@@ -46,9 +46,9 @@ const InternshipsPage = () => {
             <input
               type="text"
               placeholder="Search internships..."
-              className="w-full bg-gray-800 border border-gray-700 rounded-lg py-2 px-4 pl-10 focus:outline-none focus:border-blue-500"
+              className="w-full bg-black border border-black rounded-lg py-2 px-4 pl-10 focus:outline-none focus:border-black"
             />
-            <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+            <Search className="absolute left-3 top-2.5 h-5 w-5 text-white" />
           </div>
           <button
             onClick={() => setShowFilters(!showFilters)}
@@ -61,7 +61,7 @@ const InternshipsPage = () => {
         <div className="flex flex-col md:flex-row gap-8">
           {/* Filters Sidebar */}
           {showFilters && (
-            <div className="w-full md:w-64 bg-gray-800 p-6 rounded-lg h-fit">
+            <div className="w-full md:w-64 bg-black p-6 rounded-lg h-fit">
               <h3 className="text-lg font-semibold mb-4">Filters</h3>
               
               <div className="space-y-6">
@@ -124,7 +124,7 @@ const InternshipsPage = () => {
               {internships.map((internship) => (
                 <div
                   key={internship.id}
-                  className="bg-gray-800 rounded-lg p-6 hover:transform hover:scale-[1.02] transition-transform duration-300"
+                  className="bg-black rounded-lg p-6 hover:transform hover:scale-[1.02] transition-transform duration-300"
                   onClick={() => handleNavigate(internships.id)}
                 >
                   <div className="flex items-start">
@@ -137,19 +137,19 @@ const InternshipsPage = () => {
                       <div className="flex justify-between items-start">
                         <div>
                           <h3 className="text-xl font-semibold mb-1">{internship.title}</h3>
-                          <div className="flex items-center text-gray-400 mb-2">
+                          <div className="flex items-center text-white mb-2">
                             <Building className="h-4 w-4 mr-1" />
                             <span>{internship.company}</span>
                           </div>
                         </div>
-                        <span className="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm">
+                        <span className="bg-green-600/20 text-white px-3 py-1 rounded-full text-sm">
                           {internship.type}
                         </span>
                       </div>
                       
-                      <p className="text-gray-400 mb-4">{internship.description}</p>
+                      <p className="text-white mb-4">{internship.description}</p>
                       
-                      <div className="flex flex-wrap gap-4 text-sm text-gray-400">
+                      <div className="flex flex-wrap gap-4 text-sm text-white">
                         <div className="flex items-center">
                           <MapPin className="h-4 w-4 mr-1" />
                           {internship.location}
@@ -172,7 +172,7 @@ const InternshipsPage = () => {
                       handleNavigate(internship.id);
                     }}
                     className="mt-6 flex justify-end">
-                    <button className="bg-blue-600 hover:bg-blue-700 py-2 px-6 rounded-lg transition-colors duration-300">
+                    <button className="bg-green-600 hover:bg-green-700 py-2 px-6 rounded-lg transition-colors duration-300">
                       Apply Now
                     </button>
                   </div>

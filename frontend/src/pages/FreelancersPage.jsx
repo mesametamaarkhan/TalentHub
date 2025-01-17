@@ -35,7 +35,7 @@ const FreelancersPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-dark-greenish-gray pt-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-dark-greenish-gray pt-20 pb-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Search and View Toggle */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 space-y-4 md:space-y-0">

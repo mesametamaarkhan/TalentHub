@@ -38,7 +38,7 @@ const STPSection = () => {
               />
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{program.title}</h3>
-                <p className="text-gray-400 mb-4">{program.description}</p>
+                <p className="text-white mb-4">{program.description}</p>
                 <a href="#" className="text-green-500 hover:text-green-300 inline-flex items-center">
                   Learn more <ArrowRight className="ml-2 h-4 w-4" />
                 </a>

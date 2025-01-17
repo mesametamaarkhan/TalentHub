@@ -18,16 +18,16 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">TalentHub</h3>
             <p className="text-gray-400 mb-4">Connecting talent with opportunities worldwide.</p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-blue-400">
+              <a href="#" className="text-gray-400 hover:text-green-400">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400">
+              <a href="#" className="text-gray-400 hover:text-green-400">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400">
+              <a href="#" className="text-gray-400 hover:text-green-400">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400">
+              <a href="#" className="text-gray-400 hover:text-green-400">
                 <Instagram className="h-5 w-5" />
               </a>
             </div>
@@ -40,7 +40,7 @@ const Footer = () => {
               <ul className="space-y-2">
                 {items.map((item, index) => (
                   <li key={index}>
-                    <a href="#" className="text-gray-400 hover:text-blue-400">
+                    <a href="#" className="text-gray-400 hover:text-green-400">
                       {item}
                     </a>
                   </li>
@@ -52,7 +52,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8">
           <p className="text-center text-gray-400">
-            © {new Date().getFullYear()} T alentHub. All rights reserved.</p>
+            © {new Date().getFullYear()} TalentHub. All rights reserved.</p>
         </div>
       </div>
     </footer>

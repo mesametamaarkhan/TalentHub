@@ -53,7 +53,7 @@ const TopFreelancers = () => {
                   className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
                 />
                 <h3 className="text-xl text-white font-bold mb-2">{freelancer.name}</h3>
-                <p className="text-gray-400 mb-3">{freelancer.role}</p>
+                <p className="text-white mb-3">{freelancer.role}</p>
                 <div className="flex items-center justify-center mb-4">
                   <Star className="h-5 w-5 text-yellow-400 fill-current" />
                   <span className="text-white ml-2">{freelancer.rating}</span>

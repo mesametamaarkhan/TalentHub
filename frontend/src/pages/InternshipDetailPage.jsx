@@ -30,15 +30,15 @@ const InternshipDetailPage = () => {
           return (
             <div className="space-y-8">
               {/* Internship Description */}
-              <div className="bg-gray-800 rounded-lg p-6">
+              <div className="bg-black rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-4">Description</h3>
-                <p className="text-gray-400">{internship.description}</p>
+                <p className="text-white">{internship.description}</p>
               </div>
   
               {/* Responsibilities */}
-              <div className="bg-gray-800 rounded-lg p-6">
+              <div className="bg-black rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-4">Responsibilities</h3>
-                <ul className="list-disc pl-5 text-gray-400">
+                <ul className="list-disc pl-5 text-white">
                   {internship.responsibilities.map((item, index) => (
                     <li key={index}>{item}</li>
                   ))}
@@ -46,9 +46,9 @@ const InternshipDetailPage = () => {
               </div>
   
               {/* Requirements */}
-              <div className="bg-gray-800 rounded-lg p-6">
+              <div className="bg-black rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-4">Requirements</h3>
-                <ul className="list-disc pl-5 text-gray-400">
+                <ul className="list-disc pl-5 text-white">
                   {internship.requirements.map((item, index) => (
                     <li key={index}>{item}</li>
                   ))}
@@ -59,12 +59,12 @@ const InternshipDetailPage = () => {
   
         case 'apply':
           return (
-            <div className="bg-gray-800 rounded-lg p-6">
+            <div className="bg-black rounded-lg p-6">
               <h3 className="text-xl font-semibold mb-4">How to Apply</h3>
-              <p className="text-gray-400">Please submit your application via the link below:</p>
+              <p className="text-white">Please submit your application via the link below:</p>
               <a
                 href={internship.applicationLink}
-                className="text-blue-400 hover:text-blue-300"
+                className="text-green-400 hover:text-blue-300"
               >
                 Apply Now
               </a>
@@ -77,13 +77,13 @@ const InternshipDetailPage = () => {
     };
   
     return (
-      <div className="min-h-screen bg-gray-900 pt-20">
+      <div className="min-h-screen bg-dark-greenish-gray pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Internship Header */}
-          <div className="bg-gray-800 rounded-lg p-6 mb-8">
+          <div className="bg-black rounded-lg p-6 mb-8">
             <h1 className="text-2xl font-bold mb-4">{internship.title}</h1>
-            <p className="text-gray-400 mb-4">{internship.companyName}</p>
-            <div className="flex gap-8 text-gray-400 mb-4">
+            <p className="text-white mb-4">{internship.companyName}</p>
+            <div className="flex gap-8 text-white mb-4">
               <div>{internship.location}</div>
               <div>{internship.duration}</div>
               <div>{internship.stipend}</div>
@@ -98,7 +98,7 @@ const InternshipDetailPage = () => {
                   onClick={() => setActiveTab('overview')}
                   className={`py-4 px-1 relative ${
                     activeTab === 'overview'
-                      ? 'text-blue-400 border-b-2 border-blue-400'
+                      ? 'text-green-400 border-b-2 border-green-400'
                       : 'text-gray-400 hover:text-gray-300'
                   }`}
                 >
@@ -108,7 +108,7 @@ const InternshipDetailPage = () => {
                   onClick={() => setActiveTab('apply')}
                   className={`py-4 px-1 relative ${
                     activeTab === 'apply'
-                      ? 'text-blue-400 border-b-2 border-blue-400'
+                      ? 'text-green-400 border-b-2 border-green-400'
                       : 'text-gray-400 hover:text-gray-300'
                   }`}
                 >
