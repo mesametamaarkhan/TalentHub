@@ -13,7 +13,7 @@ const FreelanceProgram = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-900">
+    <section className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div 
@@ -22,7 +22,7 @@ const FreelanceProgram = () => {
             transition={{ duration: 0.4 }}
             >
             <h2 className="text-3xl font-bold mb-6">
-              Join Our Elite <span className="text-blue-400">Freelance Program</span>
+              Join Our Elite <span className="text-green-500">Freelance Program</span>
             </h2>
             <p className="text-gray-300 mb-8">
               Take your freelancing career to the next level with our comprehensive program designed to help you succeed in the global marketplace.
@@ -36,7 +36,7 @@ const FreelanceProgram = () => {
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="flex items-center"
                   >
-                  <CheckCircle className="text-accent mr-3" />
+                  <CheckCircle className="text-green-500 mr-3" />
                   {feature}
                 </motion.li>
               ))}
@@ -45,7 +45,7 @@ const FreelanceProgram = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.4 }}
-              className="mt-8 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-medium"
+              className="mt-8 bg-green-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-medium"
               >
               Join Now
             </motion.button>
@@ -61,7 +61,7 @@ const FreelanceProgram = () => {
               alt="Freelancer working"
               className="rounded-xl shadow-2xl"
             />
-            <div className="absolute -bottom-6 -left-6 bg-blue-600 rounded-lg p-4 shadow-xl">
+            <div className="absolute -bottom-6 -left-6 bg-green-600 rounded-lg p-4 shadow-xl">
               <p className="text-2xl font-bold">90%</p>
               <p className="text-sm">Success Rate</p>
             </div>

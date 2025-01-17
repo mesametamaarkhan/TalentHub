@@ -21,16 +21,16 @@ const STPSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-800">
+    <section className="py-20 bg-dark-greenish-gray">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Student Training Program</h2>
-          <p className="text-gray-300">Launch your career with our intensive training programs</p>
+          <h2 className="text-3xl text-white font-bold mb-4">Student Training Program</h2>
+          <p className="text-white">Launch your career with our intensive training programs</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {programs.map((program, index) => (
-            <div key={index} className="bg-gray-900 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300">
+            <div key={index} className="bg-black rounded-xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300">
               <img 
                 src={program.image} 
                 alt={program.title}
@@ -39,7 +39,7 @@ const STPSection = () => {
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{program.title}</h3>
                 <p className="text-gray-400 mb-4">{program.description}</p>
-                <a href="#" className="text-blue-400 hover:text-blue-300 inline-flex items-center">
+                <a href="#" className="text-green-500 hover:text-green-300 inline-flex items-center">
                   Learn more <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
@@ -48,7 +48,7 @@ const STPSection = () => {
         </div>
 
         <div className="text-center">
-          <button className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-medium inline-flex items-center">
+          <button className="bg-green-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-medium inline-flex items-center">
             View All Programs <ArrowRight className="ml-2 h-4 w-4" />
           </button>
         </div>

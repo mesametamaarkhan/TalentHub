@@ -17,7 +17,7 @@ const Benefits = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-900">
+    <section className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -45,7 +45,7 @@ const Benefits = () => {
                   className="flex items-start"
                   >
                   <div className="flex-shrink-0">
-                    <benefit.icon className="h-8 w-8 text-blue-400" />
+                    <benefit.icon className="h-8 w-8 text-green-500" />
                   </div>
                   <div className="ml-4">
                     <h4 className="text-xl font-semibold mb-2">{benefit.title}</h4>
@@ -68,7 +68,7 @@ const Benefits = () => {
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="flex items-start">
                   <div className="flex-shrink-0">
-                    <benefit.icon className="h-8 w-8 text-blue-400" />
+                    <benefit.icon className="h-8 w-8 text-green-500" />
                   </div>
                   <div className="ml-4">
                     <h4 className="text-xl font-semibold mb-2">{benefit.title}</h4>

@@ -25,7 +25,7 @@ const TopFreelancers = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-900">
+    <section className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -44,7 +44,7 @@ const TopFreelancers = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="bg-gray-800 rounded-xl overflow-hidden group hover:transform hover:scale-105 transition-transform duration-300"
+              className="bg-dark-greenish-gray rounded-xl overflow-hidden group hover:transform hover:scale-105 transition-transform duration-300"
               >
               <div className="p-6 text-center">
                 <img 
@@ -52,13 +52,13 @@ const TopFreelancers = () => {
                   alt={freelancer.name}
                   className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
                 />
-                <h3 className="text-xl font-bold mb-2">{freelancer.name}</h3>
+                <h3 className="text-xl text-white font-bold mb-2">{freelancer.name}</h3>
                 <p className="text-gray-400 mb-3">{freelancer.role}</p>
                 <div className="flex items-center justify-center mb-4">
                   <Star className="h-5 w-5 text-yellow-400 fill-current" />
-                  <span className="ml-2">{freelancer.rating}</span>
+                  <span className="text-white ml-2">{freelancer.rating}</span>
                 </div>
-                <a href="#" className="text-blue-400 hover:text-blue-300 inline-flex items-center">
+                <a href="#" className="text-green-400 hover:green-300 inline-flex items-center">
                   View Profile <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
@@ -71,7 +71,7 @@ const TopFreelancers = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.4 }}
-            className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-medium inline-flex items-center"
+            className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-medium inline-flex items-center"
             >
             View All Freelancers <ArrowRight className="ml-2 h-4 w-4" />
           </motion.button>

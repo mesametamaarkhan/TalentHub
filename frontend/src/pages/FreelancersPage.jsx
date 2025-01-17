@@ -35,7 +35,7 @@ const FreelancersPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 pt-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-dark-greenish-gray pt-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Search and View Toggle */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 space-y-4 md:space-y-0">
@@ -43,21 +43,21 @@ const FreelancersPage = () => {
             <input
               type="text"
               placeholder="Search freelancers..."
-              className="w-full bg-gray-800 border border-gray-700 rounded-lg py-2 px-4 pl-10 focus:outline-none focus:border-blue-500"
+              className="w-full bg-black border border-black rounded-lg py-2 px-4 pl-10 focus:outline-none focus:border-black"
             />
-            <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+            <Search className="absolute left-3 top-2.5 h-5 w-5 text-white" />
           </div>
           
           <div className="flex items-center space-x-4">
             <button
               onClick={() => setIsGridView(true)}
-              className={`p-2 rounded-lg ${isGridView ? 'bg-blue-600' : 'bg-gray-800'}`}
+              className={`p-2 rounded-lg ${isGridView ? 'bg-green-600' : 'bg-gray-800'}`}
             >
               <Grid className="h-5 w-5" />
             </button>
             <button
               onClick={() => setIsGridView(false)}
-              className={`p-2 rounded-lg ${!isGridView ? 'bg-blue-600' : 'bg-gray-800'}`}
+              className={`p-2 rounded-lg ${!isGridView ? 'bg-green-600' : 'bg-gray-800'}`}
             >
               <List className="h-5 w-5" />
             </button>
@@ -69,7 +69,7 @@ const FreelancersPage = () => {
           {freelancers.map((freelancer) => (
             <div
               key={freelancer.id}
-              className="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
+              className="bg-black rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
               onClick={() => handleNavigate(freelancer.id)} // Navigate when card is clicked
             >
               <div className="p-6">
@@ -101,7 +101,7 @@ const FreelancersPage = () => {
                     {freelancer.skills.map((skill, index) => (
                       <span
                         key={index}
-                        className="bg-gray-700 text-sm px-3 py-1 rounded-full"
+                        className="bg-green-700 text-sm px-3 py-1 rounded-full"
                       >
                         {skill}
                       </span>
@@ -114,7 +114,7 @@ const FreelancersPage = () => {
                     e.stopPropagation(); 
                     handleNavigate(freelancer.id); 
                   }}
-                  className="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-lg transition-colors duration-300"
+                  className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300"
                 >
                   View Profile
                 </button>

@@ -25,9 +25,9 @@ const WhoWeAreFor = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-800">
+    <section className="py-20 bg-dark-greenish-gray">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center mb-12">Who We're For</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 text-white">Who We're For</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {cards.map((card, index) => (
             <motion.div
@@ -35,21 +35,22 @@ const WhoWeAreFor = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-xl">
+              className="group relative overflow-hidden rounded-xl"
+            >
               <div className="absolute inset-0">
                 <img 
                   src={card.image} 
                   alt={card.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black-900 via-black-900/60"></div>
               </div>
               <div className="relative p-8 h-96 flex flex-col justify-end">
-                <h3 className="text-2xl font-bold mb-2">{card.title}</h3>
-                <p className="text-gray-300 mb-4">{card.description}</p>
+                <h3 className="text-2xl font-bold mb-2 text-white">{card.title}</h3>
+                <p className="text-white-300 mb-4">{card.description}</p>
                 <a 
                   href={card.link}
-                  className="inline-flex items-center text-blue-400 hover:text-blue-300"
+                  className="inline-flex items-center text-green-400 hover:text-green-400"
                 >
                   Learn More <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
