@@ -6,6 +6,8 @@ import CompaniesPage from './pages/CompaniesPage';
 import ProfilePage from './pages/ProfilePage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import InternshipDetailPage from './pages/InternshipDetailPage';
+import CompanyDetailPage from './pages/CompanyDetailPage';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/internships" element={<InternshipsPage />} />
           <Route path="/companies" element={<CompaniesPage />} />
           <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route path="/internship/:id" element={<InternshipDetailPage />} />
+          <Route path="/company/:id" element={<CompanyDetailPage />} />
         </Routes>
       </Router>
       <Footer />

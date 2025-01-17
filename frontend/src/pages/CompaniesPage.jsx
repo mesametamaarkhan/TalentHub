@@ -1,7 +1,9 @@
 import React from 'react';
 import { Search, MapPin, Users, ExternalLink } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const CompaniesPage = () => {
+  const navigate = useNavigate();
   const companies = [
     {
       id: 1,
@@ -42,6 +44,10 @@ const CompaniesPage = () => {
     // Add more companies as needed
   ];
 
+  const handleNavigate = (id) => {
+    navigate(`/company/${id}`); 
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 pt-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -61,6 +67,7 @@ const CompaniesPage = () => {
             <div
               key={company.id}
               className="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
+              onClick={() => handleNavigate(companies.id)}
             >
               <div className="relative h-48">
                 <img
@@ -92,7 +99,12 @@ const CompaniesPage = () => {
                 
                 <p className="text-gray-400 mb-6">{company.description}</p>
                 
-                <button className="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center">
+                <button 
+                  onClick={(e) => {
+                      e.stopPropagation();
+                      handleNavigate(companies.id);
+                  }}
+                  className="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center">
                   View Profile
                   <ExternalLink className="h-4 w-4 ml-2" />
                 </button>

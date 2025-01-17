@@ -14,10 +14,10 @@ const Navbar = () => {
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#" className="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-              <a href="#" className="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Freelancers</a>
-              <a href="#" className="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Companies</a>
-              <a href="#" className="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Internships</a>
+              <a href="/" className="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+              <a href="/freelancers" className="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Freelancers</a>
+              <a href="/companies" className="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Companies</a>
+              <a href="/internships" className="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Internships</a>
               <button className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium">Sign In</button>
             </div>
           </div>

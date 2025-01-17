@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Search, Filter, Building, MapPin, Clock, DollarSign } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const InternshipsPage = () => {
   const [showFilters, setShowFilters] = useState(false);
+  const navigate = useNavigate();
 
   const internships = [
     {
@@ -29,6 +31,11 @@ const InternshipsPage = () => {
     },
     // Add more internships as needed
   ];
+
+  // Function to handle navigation
+  const handleNavigate = (id) => {
+    navigate(`/internship/${id}`); // Navigate to profile page with freelancer ID
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 pt-20">
@@ -118,6 +125,7 @@ const InternshipsPage = () => {
                 <div
                   key={internship.id}
                   className="bg-gray-800 rounded-lg p-6 hover:transform hover:scale-[1.02] transition-transform duration-300"
+                  onClick={() => handleNavigate(internships.id)}
                 >
                   <div className="flex items-start">
                     <img
@@ -158,7 +166,12 @@ const InternshipsPage = () => {
                     </div>
                   </div>
                   
-                  <div className="mt-6 flex justify-end">
+                  <div 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNavigate(internship.id);
+                    }}
+                    className="mt-6 flex justify-end">
                     <button className="bg-blue-600 hover:bg-blue-700 py-2 px-6 rounded-lg transition-colors duration-300">
                       Apply Now
                     </button>

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Search, Grid, List, Star, MapPin, Briefcase } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const FreelancersPage = () => {
   const [isGridView, setIsGridView] = useState(true);
-  
+  const navigate = useNavigate(); 
+
   const freelancers = [
     {
       id: 1,
@@ -27,6 +29,10 @@ const FreelancersPage = () => {
     },
     // Add more freelancers as needed
   ];
+
+  const handleNavigate = (id) => {
+    navigate(`/profile/${id}`); 
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 pt-20 px-4 sm:px-6 lg:px-8">
@@ -64,6 +70,7 @@ const FreelancersPage = () => {
             <div
               key={freelancer.id}
               className="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
+              onClick={() => handleNavigate(freelancer.id)} // Navigate when card is clicked
             >
               <div className="p-6">
                 <div className="flex items-center mb-4">
@@ -102,7 +109,13 @@ const FreelancersPage = () => {
                   </div>
                 </div>
 
-                <button className="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-lg transition-colors duration-300">
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation(); 
+                    handleNavigate(freelancer.id); 
+                  }}
+                  className="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-lg transition-colors duration-300"
+                >
                   View Profile
                 </button>
               </div>
