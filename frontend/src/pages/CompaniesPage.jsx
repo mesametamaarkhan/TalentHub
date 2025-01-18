@@ -24,7 +24,7 @@ const CompaniesPage = () => {
       industry: 'Design & Creative',
       location: 'New York, NY',
       employees: '500+',
-      description: 'Award-winning design agency creating beautiful digital experiences.',
+      description: 'Award-winning design agency creating beautiful digital experiences. anognoasngo',
     },
     {
       id: 3,
@@ -33,7 +33,7 @@ const CompaniesPage = () => {
       industry: 'Tech Innovation',
       location: 'Austin, TX',
       employees: '200+',
-      description: 'Innovative tech company focused on groundbreaking solutions.',
+      description: 'Innovative tech company focused on groundbreaking solutions. aongsoasngoan',
     },
     {
       id: 4,

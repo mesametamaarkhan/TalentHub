@@ -1,12 +1,38 @@
 import React, { useState } from 'react';
 import { User, Briefcase, Link as LinkIcon, Settings, Users, Star, MapPin, Mail, Phone, Globe } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+
+const CollapsibleSection = ({ title, children }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="bg-gray-800 rounded-lg mb-6">
+      <div
+        className="flex justify-between items-center bg-black p-4 cursor-pointer rounded-t-lg"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <h3 className="text-xl font-semibold text-white">{title}</h3>
+        {isOpen ? (
+          <ChevronUp className="text-white h-6 w-6" />
+        ) : (
+          <ChevronDown className="text-white h-6 w-6" />
+        )}
+      </div>
+      {isOpen && (
+        <div className="p-6 bg-black transition-all duration-300">
+          {children}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState('overview');
   
   // Mock user data - in a real app, this would come from your backend
   const user = {
-    type: 'freelancer', // or 'company' or 'internee'
+    type: 'company', // or 'company' or 'internee'
     name: 'Sarah Johnson',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80',
     title: 'Senior Full Stack Developer',
@@ -117,11 +143,149 @@ const ProfilePage = () => {
 
       case 'settings':
         return (
-          <div className="bg-black rounded-lg p-6">
-            <h3 className="text-xl font-semibold mb-6">Profile Settings</h3>
-            {/* Add settings form here */}
+          <div className="space-y-6">
+            {/* Profile Details Section */}
+            <CollapsibleSection title="Profile Details">
+              <form className="space-y-4">
+                <div className="flex flex-col">
+                  <label className="text-white mb-1">Profession</label>
+                  <input
+                    type="text"
+                    className="bg-dark-greenish-gray text-white rounded-lg p-2"
+                    defaultValue={user.title}
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="text-white mb-1">Location</label>
+                  <input
+                    type="text"
+                    className="bg-dark-greenish-gray text-white rounded-lg p-2"
+                    defaultValue={user.location}
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="text-white mb-1">Phone</label>
+                  <input
+                    type="tel"
+                    placeholder='+1 (555) 123-4567'
+                    className="bg-dark-greenish-gray text-white rounded-lg p-2"
+                    defaultValue={user.phone}
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="text-white mb-1">Email</label>
+                  <input
+                    type="email"
+                    placeholder='youremail@example.com'
+                    className="bg-dark-greenish-gray text-white rounded-lg p-2"
+                    defaultValue={user.email}
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="text-white mb-1">Website</label>
+                  <input
+                    type="url"
+                    placeholder='www.your-website.com'
+                    className="bg-dark-greenish-gray text-white rounded-lg p-2"
+                    defaultValue={user.website}
+                  />
+                </div>
+
+                <button className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300 text-white">
+                  Save Changes
+                </button>
+              </form>
+            </CollapsibleSection>
+
+            {/* Change Password Section */}
+            <CollapsibleSection title="Change Password">
+              <form className="space-y-4">
+                <div className="flex flex-col">
+                  <label className="text-white mb-1">Current Password</label>
+                  <input
+                    type="password"
+                    placeholder='Enter current password'
+                    className="bg-dark-greenish-gray text-white rounded-lg p-2"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="text-white mb-1">New Password</label>
+                  <input
+                    type="password"
+                    placeholder='Enter new password'
+                    className="bg-dark-greenish-gray text-white rounded-lg p-2"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="text-white mb-1">Confirm Password</label>
+                  <input
+                    type="password"
+                    placeholder='Confirm new password'
+                    className="bg-dark-greenish-gray text-white rounded-lg p-2"
+                  />
+                </div>
+
+                <button className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300 text-white">
+                  Change Password
+                </button>
+              </form>
+            </CollapsibleSection>
+
+            {/* Credit Card Details Section */}
+            <CollapsibleSection title="Credit Card Details">
+              <div className="space-y-4">
+                {/* List Existing Credit Cards */}
+                <div className="flex justify-between items-center bg-dark-greenish-gray rounded-lg p-4">
+                  <span className="text-white">**** **** **** 1234</span>
+                  <button className="text-red-500 hover:text-red-600">Remove</button>
+                </div>
+
+                {/* Add New Credit Card */}
+                <form className="space-y-4">
+                  <div className="flex flex-col">
+                    <label className="text-white mb-1">Card Number</label>
+                    <input
+                      type="text"
+                      className="bg-dark-greenish-gray text-white rounded-lg p-4"
+                      placeholder="Enter card number"
+                    />
+                  </div>
+
+                  <div className="flex space-x-4">
+                    <div className="flex flex-col">
+                      <label className="text-white mb-1">Expiry Date</label>
+                      <input
+                        type="text"
+                        className="bg-dark-greenish-gray text-white rounded-lg p-4"
+                        placeholder="MM/YY"
+                      />
+                    </div>
+
+                    <div className="flex flex-col">
+                      <label className="text-white mb-1">CVC</label>
+                      <input
+                        type="text"
+                        className="bg-dark-greenish-gray text-white rounded-lg p-4"
+                        placeholder="CVC"
+                      />
+                    </div>
+                  </div>
+
+                  <button className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300 text-white">
+                    Add Card
+                  </button>
+                </form>
+              </div>
+            </CollapsibleSection>
           </div>
         );
+
 
       default:
         return null;

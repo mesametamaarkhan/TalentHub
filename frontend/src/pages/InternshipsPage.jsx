@@ -3,7 +3,7 @@ import { Search, Filter, Building, MapPin, Clock, DollarSign } from 'lucide-reac
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const InternshipsPage = () => {
-  const [showFilters, setShowFilters] = useState(true);
+  const [showFilters, setShowFilters] = useState(false);
   const navigate = useNavigate();
 
   const internships = [
@@ -52,7 +52,7 @@ const InternshipsPage = () => {
           </div>
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className={`ml-4 p-2 ${showFilters ? 'bg-green-600' : 'bg-black'} rounded-lg hover:bg-green-700`}
+            className="ml-4 p-2 bg-gray-800 rounded-lg hover:bg-gray-700"
           >
             <Filter className="h-5 w-5" />
           </button>
