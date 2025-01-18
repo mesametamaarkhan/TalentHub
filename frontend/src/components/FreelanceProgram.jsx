@@ -60,6 +60,7 @@ const FreelanceProgram = () => {
               src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80" 
               alt="Freelancer working"
               className="rounded-xl shadow-2xl"
+              loading='lazy'
             />
             <div className="absolute -bottom-6 -left-6 bg-green-600 rounded-lg p-4 shadow-xl">
               <p className="text-2xl font-bold">90%</p>

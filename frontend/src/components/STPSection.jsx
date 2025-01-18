@@ -35,6 +35,7 @@ const STPSection = () => {
                 src={program.image} 
                 alt={program.title}
                 className="w-full h-48 object-cover"
+                loading='lazy'
               />
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{program.title}</h3>
@@ -48,7 +49,7 @@ const STPSection = () => {
         </div>
 
         <div className="text-center">
-          <button className="bg-green-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-medium inline-flex items-center">
+          <button className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-medium inline-flex items-center">
             View All Programs <ArrowRight className="ml-2 h-4 w-4" />
           </button>
         </div>

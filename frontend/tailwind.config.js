@@ -7,8 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'dark-greenish-gray': '#111b14',
-        'charcoal-gray': '#2e2e2e'
+        'dark-greenish-gray': '#111b14'
       }
     },
   },

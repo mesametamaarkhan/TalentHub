@@ -51,6 +51,7 @@ const TopFreelancers = () => {
                   src={freelancer.image} 
                   alt={freelancer.name}
                   className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                  loading='lazy'
                 />
                 <h3 className="text-xl text-white font-bold mb-2">{freelancer.name}</h3>
                 <p className="text-white mb-3">{freelancer.role}</p>

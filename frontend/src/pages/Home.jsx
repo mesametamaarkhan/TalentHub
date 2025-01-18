@@ -1,12 +1,12 @@
 import React, { Suspense } from 'react';
-const Hero = React.lazy(() => import('../components/Hero'));
-const WhoWeAreFor = React.lazy(() => import('../components/WhoWeAreFor'));
-const FreelanceProgram = React.lazy(() => import('../components/FreelanceProgram'));
-const STPSection = React.lazy(() => import('../components/STPSection'));
+import Hero from '../components/Hero';
+import WhoWeAreFor from '../components/WhoWeAreFor';
+import FreelanceProgram from '../components/FreelanceProgram';
+import STPSection from '../components/STPSection';
+import TopCompanies from '../components/TopCompanies';
+import TopFreelancers from '../components/TopFreelancers';
+import SuccessStories from '../components/SuccessStories';
 const Benefits = React.lazy(() => import('../components/Benefits'));
-const TopCompanies = React.lazy(() => import('../components/TopCompanies'));
-const TopFreelancers = React.lazy(() => import('../components/TopFreelancers'));
-const SuccessStories = React.lazy(() => import('../components/SuccessStories'));
 
 function Home() {
   return (

@@ -47,6 +47,7 @@ const SuccessStories = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className="bg-black rounded-xl p-6 relative"
+              loading='lazy'
               >
               <Quote className="absolute top-6 right-6 h-8 w-8 text-green-500 opacity-50" />
               <div className="flex items-center mb-6">

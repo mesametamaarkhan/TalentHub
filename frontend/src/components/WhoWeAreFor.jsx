@@ -42,6 +42,7 @@ const WhoWeAreFor = () => {
                   src={card.image} 
                   alt={card.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  loading='lazy'
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black-900 via-black-900/60"></div>
               </div>
