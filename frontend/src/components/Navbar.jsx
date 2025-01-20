@@ -43,6 +43,18 @@ const Navbar = () => {
               >
                 Tech Leads
               </a>
+              <a
+                href="/success-stories"
+                className="hover:text-green-400 block px-3 py-2 rounded-md text-base font-medium text-white"
+              >
+                Success Stories
+              </a>
+              <a
+                href="/events"
+                className="hover:text-green-400 block px-3 py-2 rounded-md text-base font-medium text-white"
+              >
+                Events
+              </a>
               <button
                 onClick={() => navigate('/login')}
                 className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-md text-sm font-medium text-white"
@@ -92,6 +104,18 @@ const Navbar = () => {
               className="hover:text-green-400 block px-3 py-2 rounded-md text-base font-medium text-white"
             >
               Tech Leads
+            </a>
+            <a
+              href="/tech-leads"
+              className="hover:text-green-400 block px-3 py-2 rounded-md text-base font-medium text-white"
+            >
+              Success Stories
+            </a>
+            <a
+              href="/tech-leads"
+              className="hover:text-green-400 block px-3 py-2 rounded-md text-base font-medium text-white"
+            >
+              Events
             </a>
             <button
               onClick={() => navigate('/login')}

@@ -14,6 +14,8 @@ import TechLeadsPage from './pages/TechLeadsPage';
 import FreelancerDetailPage from './pages/FreelancerDetailPage';
 import InternProfilePage from './pages/InternProfilePage';
 import CompanyProfilePage from './pages/CompanyProfilePage';
+import SuccessStoriesPage from './pages/SuccessStoriesPage';
+import EventsPage from './pages/EventsPage';
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
           <Route path="/internships" element={<InternshipsPage />} />
           <Route path="/companies" element={<CompaniesPage />} />
           <Route path="/tech-leads" element={<TechLeadsPage />} />
+          <Route path="/success-stories" element={<SuccessStoriesPage />} />
+          <Route path="/events" element={<EventsPage />} />
           <Route path="/f-profile/:id" element={<ProfilePage />} />
           <Route path="/i-profile/:id" element={<InternProfilePage />} />
           <Route path="/c-profile/:id" element={<CompanyProfilePage />} />

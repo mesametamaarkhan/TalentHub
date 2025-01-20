@@ -3,16 +3,30 @@ import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 
 const Footer = () => {
   const links = {
-    company: ['About Us', 'Careers', 'Press', 'Blog'],
-    solutions: ['For Freelancers', 'For Companies', 'For Students', 'Enterprise'],
-    resources: ['Documentation', 'Support', 'Terms of Service', 'Privacy Policy'],
-    community: ['Success Stories', 'Events', 'Testimonials', 'Newsletter']
+    company: [ 
+              { title: 'About Us', hRef: 'about-us' }, 
+              { title: 'Careers', hRef: 'careers' }, 
+              { title: 'Press', hRef: 'press' }, 
+              { title: 'Blog', hRef: 'blog' }
+            ],
+    resources: [
+                { title: 'Documentation', hRef: '/documentation' },
+                { title: 'Support', hRef: '/support'  },
+                { title: 'Terms of Service', hRef: '/terms-of-service'  },
+                { title: 'Privacy Policy', hRef: '/privacy-policy'  }
+              ],
+    community: [
+                { title: 'Success Stories', hRef: '/success-stories' },
+                { title: 'Events', hRef: '/events' },
+                { title: 'Testimonials', hRef: '/testimonials' },
+                { title: 'Newsletter', hRef: '/newsletter' }
+              ]
   };
 
   return (
     <footer className="bg-black pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <h3 className="text-xl font-bold mb-4">TalentHub</h3>
@@ -40,8 +54,8 @@ const Footer = () => {
               <ul className="space-y-2">
                 {items.map((item, index) => (
                   <li key={index}>
-                    <a href="#" className="text-gray-400 hover:text-green-400">
-                      {item}
+                    <a href={item.hRef} className="text-gray-400 hover:text-green-400">
+                      {item.title}
                     </a>
                   </li>
                 ))}
