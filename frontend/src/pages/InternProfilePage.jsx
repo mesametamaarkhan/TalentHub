@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { User, Briefcase, Link as LinkIcon, Settings, Users, Star, MapPin, Mail, Phone, Globe } from 'lucide-react';
 import CollapsibleSection from '../components/CollapsibleSection';
 
-const ProfilePage = () => {
+const InternProfilePage = () => {
   const [activeTab, setActiveTab] = useState('overview');
   
   // Mock user data - in a real app, this would come from your backend
   const user = {
-    type: 'company', // or 'company' or 'internee'
+    type: 'internee', // or 'company' or 'internee'
     name: 'Sarah Johnson',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80',
     title: 'Senior Full Stack Developer',
@@ -69,7 +69,7 @@ const ProfilePage = () => {
 
             {/* Work History */}
             <div className="bg-black rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4">Work History</h3>
+              <h3 className="text-xl font-semibold mb-4">Internship History</h3>
               <div className="space-y-6">
                 {user.workHistory.map((work) => (
                   <div key={work.id} className="border-l-2 border-green-600 pl-4">
@@ -382,4 +382,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default InternProfilePage;

@@ -12,8 +12,10 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import TechLeadsPage from './pages/TechLeadsPage';
 import FreelancerDetailPage from './pages/FreelancerDetailPage';
+import InternProfilePage from './pages/InternProfilePage';
+import CompanyProfilePage from './pages/CompanyProfilePage';
 
-function App() {
+const App = () => {
   return (
     <div>
       <Navbar />
@@ -23,7 +25,9 @@ function App() {
           <Route path="/internships" element={<InternshipsPage />} />
           <Route path="/companies" element={<CompaniesPage />} />
           <Route path="/tech-leads" element={<TechLeadsPage />} />
-          <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route path="/f-profile/:id" element={<ProfilePage />} />
+          <Route path="/i-profile/:id" element={<InternProfilePage />} />
+          <Route path="/c-profile/:id" element={<CompanyProfilePage />} />
           <Route path="/freelancer/:id" element={<FreelancerDetailPage />} />
           <Route path="/internship/:id" element={<InternshipDetailPage />} />
           <Route path="/company/:id" element={<CompanyDetailPage />} />
