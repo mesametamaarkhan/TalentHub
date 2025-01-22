@@ -1,5 +1,7 @@
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import logo from '../assets/logo.png';
+import pseb from '../assets/PSEB.png';
 
 const Footer = () => {
   const links = {
@@ -29,7 +31,13 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <h3 className="text-xl font-bold mb-4">TalentHub</h3>
+          <div className="flex items-center pb-2">
+            <img
+              src={logo}
+              alt="TalentHub Logo"
+              className="h-14 w-auto" // Adjust height and width as needed
+            />
+          </div>
             <p className="text-gray-400 mb-4">Connecting talent with opportunities worldwide.</p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-green-400">
@@ -66,7 +74,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8">
           <p className="text-center text-gray-400">
-            © {new Date().getFullYear()} TalentHub. All rights reserved.</p>
+            © {new Date().getFullYear()} TechDestination. All rights reserved.</p>
         </div>
       </div>
     </footer>

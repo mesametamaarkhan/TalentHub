@@ -15,7 +15,7 @@ const Navbar = () => {
             <img
               src={logo}
               alt="TalentHub Logo"
-              className="h-8 w-auto" // Adjust height and width as needed
+              className="h-12 w-auto" // Adjust height and width as needed
             />
           </div>
 
