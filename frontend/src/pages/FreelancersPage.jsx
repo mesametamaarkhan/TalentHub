@@ -74,6 +74,16 @@ const FreelancersPage = () => {
   return (
     <div className="min-h-screen bg-dark-greenish-gray pt-20 px-4 sm:px-6 lg:px-8 pb-10">
       <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-3xl font-bold mt-4">Freelancers</h1>
+          <p className="mt-2 text-white">Hire freelancers for your work</p>
+        </motion.div>
+
         {/* Search Bar and Filter Toggle */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
           {/* Search Bar */}
