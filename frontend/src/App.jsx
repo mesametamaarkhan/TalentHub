@@ -16,6 +16,10 @@ import InternProfilePage from './pages/InternProfilePage';
 import CompanyProfilePage from './pages/CompanyProfilePage';
 import SuccessStoriesPage from './pages/SuccessStoriesPage';
 import EventsPage from './pages/EventsPage';
+import SuccessStoryDetailPage from './pages/SuccessStoryDetailPage';
+import STPPage from './pages/STPPage';
+import STPDetailPage from './pages/STPDetailPage';
+// import TechLeadDetailsPage from './pages/TechLeadDetailsPage';
 
 const App = () => {
   return (
@@ -28,6 +32,7 @@ const App = () => {
           <Route path="/companies" element={<CompaniesPage />} />
           <Route path="/tech-leads" element={<TechLeadsPage />} />
           <Route path="/success-stories" element={<SuccessStoriesPage />} />
+          <Route path="/stp" element={<STPPage />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/f-profile/:id" element={<ProfilePage />} />
           <Route path="/i-profile/:id" element={<InternProfilePage />} />
@@ -35,6 +40,9 @@ const App = () => {
           <Route path="/freelancer/:id" element={<FreelancerDetailPage />} />
           <Route path="/internship/:id" element={<InternshipDetailPage />} />
           <Route path="/company/:id" element={<CompanyDetailPage />} />
+          {/* <Route path="/tech-leads/:id" element={<TechLeadDetailsPage />} /> */}
+          <Route path="/success-stories/:id" element={<SuccessStoryDetailPage />} />
+          <Route path="/stp/:id" element={<STPDetailPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
         </Routes>

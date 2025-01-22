@@ -169,16 +169,6 @@ const CompanyDetailPage = () => {
               >
                 Job Listings
               </button>
-              <button
-                onClick={() => setActiveTab('settings')}
-                className={`py-4 px-1 relative ${
-                  activeTab === 'settings'
-                    ? 'text-green-400 border-b-2 border-green-400'
-                    : 'text-gray-400 hover:text-gray-300'
-                }`}
-              >
-                Settings
-              </button>
             </nav>
           </div>
         </div>

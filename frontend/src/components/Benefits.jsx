@@ -26,7 +26,7 @@ const Benefits = () => {
           className="text-center mb-16"
           >
           <h2 className="text-3xl font-bold text-center mb-16">Membership Benefits</h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-green-400 max-w-2xl mx-auto">
             Discover the advantages of joining our platform, whether you're a company
             looking to hire or a freelancer seeking opportunities.
           </p>
@@ -49,7 +49,7 @@ const Benefits = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-xl font-semibold mb-2">{benefit.title}</h4>
-                    <p className="text-gray-400">{benefit.description}</p>
+                    <p className="text-green-400">{benefit.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -72,7 +72,7 @@ const Benefits = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-xl font-semibold mb-2">{benefit.title}</h4>
-                    <p className="text-gray-400">{benefit.description}</p>
+                    <p className="text-green-400">{benefit.description}</p>
                   </div>
                 </motion.div>
               ))}

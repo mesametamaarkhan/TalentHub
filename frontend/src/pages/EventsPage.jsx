@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar as CalendarIcon, MapPin, Clock, Users, Camera, Send, X, ChevronLeft, ChevronRight, TreePine} from 'lucide-react';
 import CalendarPanel from '../components/CalendarPanel';
+import EventSubmissionForm from '../forms/EventSubmissionForm';
 
 const EventsPage = () => {
     const [showSubmitForm, setShowSubmitForm] = useState(false);
@@ -33,6 +34,7 @@ const EventsPage = () => {
             description: 'Learn the fundamentals of Web3 development with hands-on coding sessions.',
             attendees: 200,
         },
+        
     ];
 
     // Mock past events
@@ -60,87 +62,6 @@ const EventsPage = () => {
             highlights: ['1000+ participants', '4 technical sessions', 'Live Q&A'],
         },
     ];
-
-    const EventSubmissionForm = () => (
-        <div className="fixed inset-0 bg-dark-greenish-gray/50 backdrop-blur-sm flex items-center justify-center z-50">
-            <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-black rounded-xl p-8 max-w-2xl w-full mx-4 relative max-h-[90vh] overflow-y-auto"
-            >
-                <button
-                    onClick={() => setShowSubmitForm(false)}
-                    className="absolute right-4 top-4 text-white hover:text-white"
-                >
-                    <X className="h-6 w-6" />
-                </button>
-
-                <h3 className="text-2xl font-bold mb-6">Submit Event Request</h3>
-                <form className="space-y-6">
-                    <div>
-                        <label className="block text-sm font-medium mb-2">Event Title</label>
-                        <input
-                            type="text"
-                            className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-white"
-                            placeholder="Enter event title"
-                        />
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label className="block text-sm font-medium mb-2">Date</label>
-                            <input
-                                type="date"
-                                className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-white"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium mb-2">Time</label>
-                            <input
-                                type="time"
-                                className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-white"
-                            />
-                        </div>
-                    </div>
-
-                    <div>
-                        <label className="block text-sm font-medium mb-2">Location</label>
-                        <input
-                            type="text"
-                            className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-white"
-                            placeholder="Enter location or 'Online' for virtual events"
-                        />
-                    </div>
-
-                    <div>
-                        <label className="block text-sm font-medium mb-2">Description</label>
-                        <textarea
-                            rows={4}
-                            className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-white"
-                            placeholder="Describe your event..."
-                        />
-                    </div>
-
-                    <div>
-                        <label className="block text-sm font-medium mb-2">Promotional Materials</label>
-                        <div className="bg-dark-greenish-gray border-2 border-dashed border-green-700 rounded-lg p-8 text-center">
-                            <Camera className="h-8 w-8 mx-auto mb-4 text-green-400" />
-                            <p className="text-sm text-gray-400 mb-2">Upload event banner or promotional materials</p>
-                            <p className="text-xs text-gray-500">Supported formats: JPG, PNG (max 5MB)</p>
-                        </div>
-                    </div>
-
-                    <button
-                        type="submit"
-                        className="w-full bg-green-600 hover:bg-green-700 py-3 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
-                    >
-                        <Send className="h-5 w-5" />
-                        Submit Event Request
-                    </button>
-                </form>
-            </motion.div>
-        </div>
-    );
 
     return (
         <div className="min-h-screen bg-dark-greenish-gray">
@@ -222,21 +143,21 @@ const EventsPage = () => {
                                 <h3 className="text-xl font-bold mb-2">{event.title}</h3>
                                 <div className="space-y-2 mb-4">
                                     <div className="flex items-center text-white">
-                                        <CalendarIcon className="h-4 w-4 mr-2" />
+                                        <CalendarIcon className="h-4 w-4 mr-2 text-green-400" />
                                         {event.date}
                                     </div>
                                     <div className="flex items-center text-white">
-                                        <Clock className="h-4 w-4 mr-2" />
+                                        <Clock className="h-4 w-4 mr-2 text-green-400" />
                                         {event.time}
                                     </div>
                                     <div className="flex items-center text-white">
-                                        <MapPin className="h-4 w-4 mr-2" />
+                                        <MapPin className="h-4 w-4 mr-2 text-green-400" />
                                         {event.location}
                                     </div>
                                     {event.attendees && (
                                         <div className="flex items-center text-white">
-                                        <Users className="h-4 w-4 mr-2" />
-                                        {event.attendees} expected attendees
+                                        <Users className="h-4 w-4 mr-2 text-green-400" />
+                                            {event.attendees} expected attendees
                                         </div>
                                     )}
                                 </div>
@@ -269,7 +190,7 @@ const EventsPage = () => {
                 >
                     <TreePine className="h-12 w-12 mx-auto mb-4 text-green-400 animate-float" />
                     <h2 className="text-2xl font-bold mb-4">Host Your Event With Us!</h2>
-                    <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+                    <p className="text-green-400 mb-6 max-w-2xl mx-auto">
                         Share your knowledge and expertise with our community. Submit your event proposal and reach thousands of tech professionals.
                     </p>
                     <button
@@ -294,7 +215,7 @@ const EventsPage = () => {
             )}
 
             {/* Event Submission Form */}
-            {showSubmitForm && <EventSubmissionForm />}
+            {showSubmitForm && <EventSubmissionForm setShowSubmitForm={setShowSubmitForm} />}
         </div>
     );
 };

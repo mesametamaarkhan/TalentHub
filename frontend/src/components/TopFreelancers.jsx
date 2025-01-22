@@ -34,7 +34,7 @@ const TopFreelancers = () => {
           className="text-center mb-12"
           >
           <h2 className="text-3xl font-bold mb-4">Top Rated Freelancers</h2>
-          <p className="text-gray-300">Work with the best talent in the industry</p>
+          <p className="text-green-400">Work with the best talent in the industry</p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">

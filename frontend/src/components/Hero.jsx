@@ -18,7 +18,7 @@ const Hero = () => {
           backgroundImage: 'url("/assets/banner.jpg")'
         }}
       >
-        <div className="absolute inset-0 bg-black-900/80 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-dark-greenish-gray/50 backdrop-blur-sm"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
@@ -27,7 +27,7 @@ const Hero = () => {
             Connect with Top Talent & <br />
             <span className="text-green-500">Opportunities</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white-300 mb-12 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-white mb-12 max-w-3xl mx-auto">
             Whether you're a freelancer, company, or student, find your perfect match in our growing professional community.
           </p>
           

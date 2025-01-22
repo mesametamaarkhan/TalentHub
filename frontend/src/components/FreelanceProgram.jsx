@@ -24,7 +24,7 @@ const FreelanceProgram = () => {
             <h2 className="text-3xl font-bold mb-6">
               Join Our Elite <span className="text-green-500">Freelance Program</span>
             </h2>
-            <p className="text-gray-300 mb-8">
+            <p className="text-green-400 mb-8">
               Take your freelancing career to the next level with our comprehensive program designed to help you succeed in the global marketplace.
             </p>
             <ul className="space-y-4">
@@ -45,7 +45,7 @@ const FreelanceProgram = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.4 }}
-              className="mt-8 bg-green-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-medium"
+              className="mt-8 bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-medium"
               >
               Join Now
             </motion.button>

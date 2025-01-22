@@ -31,7 +31,7 @@ const TopCompanies = () => {
           className="text-center mb-12"
           >
           <h2 className="text-3xl text-white font-bold mb-4">Top IT Companies</h2>
-          <p className="text-white">Partner with industry leaders</p>
+          <p className="text-green-400">Partner with industry leaders</p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -54,7 +54,7 @@ const TopCompanies = () => {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{company.name}</h3>
-                <p className="text-gray-400 mb-4">{company.industry}</p>
+                <p className="text-white mb-4">{company.industry}</p>
                 <a href="#" className="text-green-400 hover:text-green-300 inline-flex items-center">
                   View Profile <ArrowRight className="ml-2 h-4 w-4" />
                 </a>

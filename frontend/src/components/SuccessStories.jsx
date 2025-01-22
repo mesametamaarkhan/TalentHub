@@ -36,7 +36,7 @@ const SuccessStories = () => {
           transition={{ duration: 0.4 }}
           className="text-center mb-12">
           <h2 className="text-3xl text-white font-bold mb-4">Success Stories</h2>
-          <p className="text-white">Real stories from our community members</p>
+          <p className="text-green-400">Real stories from our community members</p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -58,7 +58,7 @@ const SuccessStories = () => {
                 />
                 <div className="ml-4">
                   <h3 className="font-bold">{story.name}</h3>
-                  <p className="text-sm text-gray-400">{story.role}</p>
+                  <p className="text-sm text-white">{story.role}</p>
                   <p className="text-sm text-green-500">{story.company}</p>
                 </div>
               </div>
