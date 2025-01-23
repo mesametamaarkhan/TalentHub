@@ -156,8 +156,8 @@ const STPPage = () => {
                 </div>
                 <p className="text-white mb-4">{park.description}</p>
                 <button 
-                  onClick={() => handleNavigate(`/stp/${park.id}`)}
-                  className="w-full bg-green-600 hover:bg-green-700 py-2 rounded-lg transition-colors duration-300 flex items-center justify-center"
+                    onClick={() => handleNavigate(`/stp/${park.id}`)}
+                    className="w-full bg-green-600 hover:bg-green-700 py-2 rounded-lg transition-colors duration-300 flex items-center justify-center"
                   >
                   View Details
                   <ArrowRight className="ml-2 h-4 w-4" />
