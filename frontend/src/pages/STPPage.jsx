@@ -3,11 +3,17 @@ import { motion } from 'framer-motion';
 import { Wifi, Users, Lightbulb, Calendar, FlaskRound as Flask, MapPin, ArrowRight, Building, TreePine, Rocket, Handshake } from 'lucide-react';
 import StartupRegistrationForm from '../forms/StartupRegistrationForm';
 import PartnershipForm from '../forms/PartnershipForm';
+import { useNavigate } from 'react-router-dom';
 
 const STPPage = () => {
   const [selectedPark, setSelectedPark] = useState(null);
   const [showStartupForm, setShowStartupForm] = useState(false);
   const [showPartnerForm, setShowPartnerForm] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavigate = (link) => {
+    navigate(`${link}`);
+  }
 
   const featuredParks = [
     {
@@ -149,7 +155,10 @@ const STPPage = () => {
                   ))}
                 </div>
                 <p className="text-white mb-4">{park.description}</p>
-                <button className="w-full bg-green-600 hover:bg-green-700 py-2 rounded-lg transition-colors duration-300 flex items-center justify-center">
+                <button 
+                  onClick={() => handleNavigate(`/stp/${park.id}`)}
+                  className="w-full bg-green-600 hover:bg-green-700 py-2 rounded-lg transition-colors duration-300 flex items-center justify-center"
+                  >
                   View Details
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </button>

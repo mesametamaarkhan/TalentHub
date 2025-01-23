@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Calendar, Building, Users, Clock, Mail, Phone, Globe, Send, Wifi, Coffee, Monitor, FlaskRound as Flask, Network, Rocket, X, TreePine } from 'lucide-react';
+import { MapPin, Calendar, Building, Users, Clock, Mail, Phone, Send, Wifi, Coffee, Monitor, FlaskRound as Flask, Network, Rocket, X, TreePine } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
 
 const STPDetailPage = () => {
   const [showContactForm, setShowContactForm] = useState(false);
   const [showMembershipForm, setShowMembershipForm] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavigate = (link) => {
+    navigate(`${link}`);
+  }
 
   // Mock STP data
   const stpData = {
@@ -464,7 +471,10 @@ const STPDetailPage = () => {
           </div>
 
           <div className="text-center">
-            <button className="bg-green-600 hover:bg-green-700 py-3 px-8 rounded-lg transition-colors duration-300 inline-flex items-center">
+            <button
+              onClick={() => handleNavigate(`/events`)} 
+              className="bg-green-600 hover:bg-green-700 py-3 px-8 rounded-lg transition-colors duration-300 inline-flex items-center"
+              >
               View All Events
               <Calendar className="ml-2 h-5 w-5" />
             </button>

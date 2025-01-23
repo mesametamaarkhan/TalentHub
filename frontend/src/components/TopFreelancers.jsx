@@ -1,8 +1,15 @@
 import React from 'react';
 import { ArrowRight, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const TopFreelancers = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (link) => {
+    navigate(`${link}`);
+  }
+
   const freelancers = [
     {
       name: 'Sarah Johnson',
@@ -59,7 +66,7 @@ const TopFreelancers = () => {
                   <Star className="h-5 w-5 text-yellow-400 fill-current" />
                   <span className="text-white ml-2">{freelancer.rating}</span>
                 </div>
-                <a href="#" className="text-green-400 hover:green-300 inline-flex items-center">
+                <a href={`/freelancer/${index + 1}`} className="text-green-400 hover:green-300 inline-flex items-center">
                   View Profile <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
@@ -73,6 +80,7 @@ const TopFreelancers = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.4 }}
             className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-medium inline-flex items-center"
+            onClick={() => handleNavigate('/freelancers')}
             >
             View All Freelancers <ArrowRight className="ml-2 h-4 w-4" />
           </motion.button>

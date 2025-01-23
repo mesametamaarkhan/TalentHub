@@ -1,8 +1,15 @@
 import React from 'react';
 import { ArrowRight, Quote } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const SuccessStories = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (link) => {
+    navigate(`${link}`);
+  }
+
   const stories = [
     {
       name: 'David Wilson',
@@ -63,7 +70,7 @@ const SuccessStories = () => {
                 </div>
               </div>
               <p className="text-white italic mb-4">"{story.quote}"</p>
-              <a href="#" className="text-green-500 hover:text-green-400 inline-flex items-center">
+              <a href={`/success-stories/${index + 1}`} className="text-green-500 hover:text-green-400 inline-flex items-center">
                 Read Full Story <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </motion.div>
@@ -75,7 +82,9 @@ const SuccessStories = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.4 }}
-            className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-medium inline-flex items-center">
+            className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-medium inline-flex items-center"
+            onClick={() => handleNavigate('/success-stories')}
+            >
             View All Stories <ArrowRight className="ml-2 h-4 w-4" />
           </motion.button>
         </div>

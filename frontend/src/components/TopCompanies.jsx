@@ -1,8 +1,15 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const TopCompanies = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (link) => {
+    navigate(`${link}`);
+  }
+
   const companies = [
     {
       name: 'TechCorp',
@@ -55,7 +62,7 @@ const TopCompanies = () => {
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{company.name}</h3>
                 <p className="text-white mb-4">{company.industry}</p>
-                <a href="#" className="text-green-400 hover:text-green-300 inline-flex items-center">
+                <a href={`/company/${index + 1}`} className="text-green-400 hover:text-green-300 inline-flex items-center">
                   View Profile <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
@@ -69,8 +76,9 @@ const TopCompanies = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.4 }}
             className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-medium inline-flex items-center"
+            onClick={() => handleNavigate('/companies')}
             >
-            View All Companies <ArrowRight className="ml-2 h-4 w-4" />
+              View All Companies <ArrowRight className="ml-2 h-4 w-4" />
           </motion.button>
         </div>
       </div>

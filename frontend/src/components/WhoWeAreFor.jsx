@@ -17,10 +17,10 @@ const WhoWeAreFor = () => {
       link: '/companies'
     },
     {
-      title: 'Students',
+      title: 'Internships',
       description: 'Kickstart your career with internship opportunities',
       image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80',
-      link: '/students'
+      link: '/internships'
     }
   ];
 

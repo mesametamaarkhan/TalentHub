@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Leaf, Quote, Camera, ArrowRight, Send, X } from 'lucide-react';
 import SubmitStoryForm from '../forms/SubmitStoryForm';
+import { useNavigate } from 'react-router-dom';
 
 const SuccessStoriesPage = () => {
   const [showSubmitForm, setShowSubmitForm] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
+
+  const handleNavigate = (link) => {
+    navigate(`${link}`);
+  }
 
   // Mock featured story
   const featuredStory = {
@@ -95,7 +101,9 @@ const SuccessStoriesPage = () => {
                             </p>
                             </div>
                         </div>
-                        <button className="text-green-400 hover:text-green-300 py-2 transition-colors duration-300 inline-flex items-center">
+                        <button 
+                            onClick={() => handleNavigate(`/success-stories/${featuredStory.id}`)}
+                            className="text-green-400 hover:text-green-300 py-2 transition-colors duration-300 inline-flex items-center">
                             Read Full Story
                             <ArrowRight className="ml-2 h-4 w-4" />
                         </button>
@@ -126,7 +134,10 @@ const SuccessStoriesPage = () => {
                                     <p className="font-medium">{story.name}</p>
                                     <p className="text-sm text-green-400">{story.role}</p>
                                 </div>
-                                <button className="text-green-400 hover:text-green-300 inline-flex items-center">
+                                <button 
+                                    onClick={() => handleNavigate(`/success-stories/${story.id}`)}
+                                    className="text-green-400 hover:text-green-300 inline-flex items-center"
+                                    >
                                     Read More
                                     <ArrowRight className="ml-2 h-4 w-4" />
                                 </button>

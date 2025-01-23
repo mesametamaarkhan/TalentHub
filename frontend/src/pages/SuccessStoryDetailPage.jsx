@@ -19,10 +19,16 @@ import {
   Link as LinkIcon
 } from 'lucide-react';
 import SubmitStoryForm from '../forms/SubmitStoryForm';
+import { useNavigate } from 'react-router-dom';
 
 const SuccessStoryDetailPage = () => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showSubmitForm, setShowSubmitForm] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavigate = (link) => {
+    navigate(`${link}`);
+  }
 
   // Mock success story data
   const story = {
@@ -117,11 +123,11 @@ const SuccessStoryDetailPage = () => {
   };
 
   const ShareModal = () => (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-dark-greenish-gray/50 backdrop-blur-sm flex items-center justify-center z-50">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-forest-900 rounded-xl p-8 max-w-md w-full mx-4 relative"
+        className="bg-black rounded-xl p-8 max-w-md w-full mx-4 relative"
       >
         <button
           onClick={() => setShowShareModal(false)}
@@ -132,19 +138,19 @@ const SuccessStoryDetailPage = () => {
 
         <h3 className="text-2xl font-bold mb-6">Share This Story</h3>
         <div className="space-y-4">
-          <div className="flex items-center justify-between p-4 glass-effect rounded-lg">
+          <div className="flex items-center bg-dark-greenish-gray justify-between p-4 glass-effect rounded-lg">
             <div className="flex items-center">
-              <LinkIcon className="h-5 w-5 mr-3 text-primary-400" />
+              <LinkIcon className="h-5 w-5 mr-3 text-green-400" />
               <span className="text-sm">https://success.story/sarah-chen</span>
             </div>
-            <button className="text-primary-400 hover:text-primary-300">Copy</button>
+            <button className="text-green-400 hover:text-green-300">Copy</button>
           </div>
           
           <div className="grid grid-cols-2 gap-4">
-            <button className="w-full bg-[#1DA1F2] hover:bg-[#1a8cd8] py-3 rounded-lg transition-colors duration-300 flex items-center justify-center">
+            <button className="w-full bg-green-600 hover:bg-green-700 py-3 rounded-lg transition-colors duration-300 flex items-center justify-center">
               Twitter
             </button>
-            <button className="w-full bg-[#0A66C2] hover:bg-[#094c8f] py-3 rounded-lg transition-colors duration-300 flex items-center justify-center">
+            <button className="w-full bg-green-600 hover:bg-green-700 py-3 rounded-lg transition-colors duration-300 flex items-center justify-center">
               LinkedIn
             </button>
           </div>
@@ -472,7 +478,9 @@ const SuccessStoryDetailPage = () => {
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2">{relatedStory.title}</h3>
                   <p className="text-white mb-4">{relatedStory.excerpt}</p>
-                  <button className="text-green-400 hover:text-green-300 inline-flex items-center">
+                  <button 
+                    onClick={() => handleNavigate(`/success-stories/${relatedStory.id}`)}
+                    className="text-green-400 hover:text-green-300 inline-flex items-center">
                     Read Story
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </button>
@@ -507,7 +515,7 @@ const SuccessStoryDetailPage = () => {
                 <Send className="ml-2 h-5 w-5" />
               </button>
               <a
-                href="/join"
+                href="#"
                 className="bg-green-600 hover:bg-green-700 py-3 px-8 rounded-lg transition-colors duration-300 inline-flex items-center"
               >
                 Join Our Community

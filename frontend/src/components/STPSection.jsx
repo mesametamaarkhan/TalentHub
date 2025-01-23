@@ -1,7 +1,14 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const STPSection = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (link) => {
+    navigate(`${link}`);
+  }
+
   const programs = [
     {
       title: 'Software Development',
@@ -40,7 +47,7 @@ const STPSection = () => {
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{program.title}</h3>
                 <p className="text-white mb-4">{program.description}</p>
-                <a href="#" className="text-green-500 hover:text-green-300 inline-flex items-center">
+                <a href={`/stp/${index + 1}`} className="text-green-500 hover:text-green-300 inline-flex items-center">
                   Learn more <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
@@ -49,8 +56,11 @@ const STPSection = () => {
         </div>
 
         <div className="text-center">
-          <button className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-medium inline-flex items-center">
-            View All Programs <ArrowRight className="ml-2 h-4 w-4" />
+          <button
+            onClick={() => handleNavigate('/stp')}
+            className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-medium inline-flex items-center"
+          >
+          View All Parks <ArrowRight className="ml-2 h-4 w-4" />
           </button>
         </div>
       </div>
