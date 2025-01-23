@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar as CalendarIcon, MapPin, Clock, Users, Camera, Send, X, ChevronLeft, ChevronRight, TreePine} from 'lucide-react';
+import { Calendar as CalendarIcon, MapPin, Clock, Users, Send, TreePine} from 'lucide-react';
 import CalendarPanel from '../components/CalendarPanel';
 import EventSubmissionForm from '../forms/EventSubmissionForm';
 

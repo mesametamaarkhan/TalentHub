@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Leaf, Quote, Camera, ArrowRight, Send, X } from 'lucide-react';
+import { Leaf, Quote, ArrowRight, Send } from 'lucide-react';
 import SubmitStoryForm from '../forms/SubmitStoryForm';
 import { useNavigate } from 'react-router-dom';
 

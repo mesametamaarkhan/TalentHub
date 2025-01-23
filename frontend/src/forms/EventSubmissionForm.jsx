@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar as CalendarIcon, MapPin, Clock, Users, Camera, Send, X, ChevronLeft, ChevronRight, TreePine} from 'lucide-react';
-import CalendarPanel from '../components/CalendarPanel';
+import { Camera, Send, X } from 'lucide-react';
+
 
 const EventSubmissionForm = ({ setShowSubmitForm }) => {
     return (

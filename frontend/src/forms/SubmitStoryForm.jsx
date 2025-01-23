@@ -1,13 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import {
-    Quote,
-    Heart,
-    Send,
-    X,
-    Building,
-    User,
-  } from 'lucide-react';
+import { Quote, Heart, Send, X, Building, User } from 'lucide-react';
 
 const SubmitStoryForm = ({ setShowSubmitForm}) => (
     <div className="fixed inset-0 bg-dark-greenish-gray/50 backdrop-blur-sm flex items-center justify-center z-50">

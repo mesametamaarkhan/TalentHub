@@ -19,12 +19,14 @@ import EventsPage from './pages/EventsPage';
 import SuccessStoryDetailPage from './pages/SuccessStoryDetailPage';
 import STPPage from './pages/STPPage';
 import STPDetailPage from './pages/STPDetailPage';
-// import TechLeadDetailsPage from './pages/TechLeadDetailsPage';
+import TechLeadsDetailPage from './pages/TechLeadsDetailPage';
+import ScrollToTop from './components/ScrollToTop';
 
 const App = () => {
   return (
     <div>
       <Navbar />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/freelancers" element={<FreelancersPage />} />
@@ -40,7 +42,7 @@ const App = () => {
           <Route path="/freelancer/:id" element={<FreelancerDetailPage />} />
           <Route path="/internship/:id" element={<InternshipDetailPage />} />
           <Route path="/company/:id" element={<CompanyDetailPage />} />
-          {/* <Route path="/tech-leads/:id" element={<TechLeadDetailsPage />} /> */}
+          <Route path="/tech-leads/:id" element={<TechLeadsDetailPage />} />
           <Route path="/success-stories/:id" element={<SuccessStoryDetailPage />} />
           <Route path="/stp/:id" element={<STPDetailPage />} />
           <Route path="/login" element={<LoginPage />} />

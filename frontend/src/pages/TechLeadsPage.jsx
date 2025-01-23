@@ -34,7 +34,7 @@ const TechLeadsPage = () => {
   ];
 
   const handleNavigate = (id) => {
-    navigate(`/techlead/${id}`);
+    navigate(`/tech-leads/${id}`);
   };
 
   return (

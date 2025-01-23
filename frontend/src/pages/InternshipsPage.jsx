@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Filter, MapPin, Users, ExternalLink, Clock, DollarSign } from 'lucide-react';
+import { Search, Filter, MapPin, ExternalLink, Clock, DollarSign } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 

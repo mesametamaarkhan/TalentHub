@@ -1,7 +1,6 @@
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import logo from '../assets/logo.png';
-import pseb from '../assets/PSEB.png';
 
 const Footer = () => {
   const links = {

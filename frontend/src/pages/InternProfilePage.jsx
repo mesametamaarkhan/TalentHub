@@ -15,7 +15,7 @@ const InternProfilePage = () => {
     email: 'sarah@example.com',
     phone: '+1 (555) 123-4567',
     website: 'www.sarahjohnson.dev',
-    bio: 'Passionate full-stack developer with 5+ years of experience in building scalable web applications.',
+    bio: 'I am a passionate full stack developer and I specialize in React and Node.js.',
     skills: ['React', 'Node.js', 'TypeScript', 'MongoDB', 'AWS'],
     rating: 4.9,
     completedProjects: 45,
@@ -33,9 +33,9 @@ const InternProfilePage = () => {
       {
         id: 1,
         company: 'TechCorp',
-        role: 'Senior Developer',
-        duration: '2020 - Present',
-        description: 'Led development of multiple high-impact projects.'
+        role: 'Front End Intern',
+        duration: 'March 2020 - June 2020',
+        description: 'Worked on building user interfaces for web applications.'
       },
       // Add more work history items
     ]

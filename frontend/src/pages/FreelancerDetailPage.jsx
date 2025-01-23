@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Briefcase, Link as LinkIcon, Settings, Users, Star, MapPin, Mail, Phone, Globe } from 'lucide-react';
+import { User, Briefcase, Link as LinkIcon, Star, MapPin, Mail, Phone, Globe } from 'lucide-react';
 
 const FreelancerDetailPage = () => {
   const [activeTab, setActiveTab] = useState('overview');

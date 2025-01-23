@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Briefcase, Link as LinkIcon, Settings, Users, Star, MapPin, Mail, Phone, Globe, PlusCircle } from 'lucide-react';
+import { User, Briefcase, Settings, Users, Star, MapPin, Mail, Phone, Globe } from 'lucide-react';
 import CollapsibleSection from '../components/CollapsibleSection';
 
 const CompanyProfilePage = () => {

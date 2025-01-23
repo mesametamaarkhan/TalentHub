@@ -1,23 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import {
-  Share2,
-  Users,
-  ArrowRight,
-  Quote,
-  Trophy,
-  Calendar,
-  Rocket,
-  Target,
-  Lightbulb,
-  Heart,
-  Send,
-  X,
-  TreePine,
-  Building,
-  Briefcase,
-  Link as LinkIcon
-} from 'lucide-react';
+import { Share2, Users, ArrowRight, Quote, Trophy, Calendar, Rocket, Target, Lightbulb, Heart, Send, X, TreePine, Building, Briefcase, Link as LinkIcon } from 'lucide-react';
 import SubmitStoryForm from '../forms/SubmitStoryForm';
 import { useNavigate } from 'react-router-dom';
 

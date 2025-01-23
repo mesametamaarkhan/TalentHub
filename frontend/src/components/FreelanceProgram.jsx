@@ -1,8 +1,15 @@
 import React from 'react';
 import { CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const FreelanceProgram = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (link) => {
+    navigate(`${link}`);
+  }
+  
   const features = [
     'Access to global opportunities',
     'Secure payment protection',
@@ -46,6 +53,7 @@ const FreelanceProgram = () => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.4 }}
               className="mt-8 bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-medium"
+              onClick={() => handleNavigate('/signup')}
               >
               Join Now
             </motion.button>
