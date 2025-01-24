@@ -96,11 +96,11 @@ const STPDetailPage = () => {
   };
 
   const ContactForm = () => (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-dark-greenish-gray/50 backdrop-blur-sm flex items-center justify-center z-50">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-forest-900 rounded-xl p-8 max-w-2xl w-full mx-4 relative"
+        className="bg-black rounded-xl p-8 max-w-2xl w-full mx-4 relative"
       >
         <button
           onClick={() => setShowContactForm(false)}
@@ -116,7 +116,7 @@ const STPDetailPage = () => {
               <label className="block text-sm font-medium mb-2">Name</label>
               <input
                 type="text"
-                className="w-full bg-forest-800 border border-forest-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
+                className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
                 placeholder="Your name"
               />
             </div>
@@ -124,7 +124,7 @@ const STPDetailPage = () => {
               <label className="block text-sm font-medium mb-2">Email</label>
               <input
                 type="email"
-                className="w-full bg-forest-800 border border-forest-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
+                className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
                 placeholder="Your email"
               />
             </div>
@@ -134,7 +134,7 @@ const STPDetailPage = () => {
             <label className="block text-sm font-medium mb-2">Subject</label>
             <input
               type="text"
-              className="w-full bg-forest-800 border border-forest-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
+              className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
               placeholder="Message subject"
             />
           </div>
@@ -143,14 +143,14 @@ const STPDetailPage = () => {
             <label className="block text-sm font-medium mb-2">Message</label>
             <textarea
               rows={4}
-              className="w-full bg-forest-800 border border-forest-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
+              className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
               placeholder="Your message..."
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-primary-600 hover:bg-primary-700 py-3 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
+            className="w-full bg-green-600 hover:bg-green-700 py-3 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
           >
             <Send className="h-5 w-5" />
             Send Message
@@ -161,11 +161,11 @@ const STPDetailPage = () => {
   );
 
   const MembershipForm = () => (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-dark-greenish-gray/50 backdrop-blur-sm flex items-center justify-center z-50">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-forest-900 rounded-xl p-8 max-w-2xl w-full mx-4 relative max-h-[90vh] overflow-y-auto"
+        className="bg-black rounded-xl p-8 max-w-2xl w-full mx-4 relative max-h-[90vh] overflow-y-auto"
       >
         <button
           onClick={() => setShowMembershipForm(false)}
@@ -178,7 +178,7 @@ const STPDetailPage = () => {
         <form className="space-y-6">
           <div>
             <h4 className="text-lg font-semibold mb-4 flex items-center">
-              <Building className="h-5 w-5 mr-2" />
+              <Building className="h-5 w-5 mr-2 text-green-400" />
               Organization Details
             </h4>
             <div className="space-y-4">
@@ -186,13 +186,13 @@ const STPDetailPage = () => {
                 <label className="block text-sm font-medium mb-2">Organization Name</label>
                 <input
                   type="text"
-                  className="w-full bg-forest-800 border border-forest-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
+                  className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
                   placeholder="Enter organization name"
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2">Industry</label>
-                <select className="w-full bg-forest-800 border border-forest-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500">
+                <select className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500">
                   <option value="">Select industry</option>
                   <option value="software">Software Development</option>
                   <option value="ai">AI/ML</option>
@@ -204,7 +204,7 @@ const STPDetailPage = () => {
                 <label className="block text-sm font-medium mb-2">Team Size</label>
                 <input
                   type="number"
-                  className="w-full bg-forest-800 border border-forest-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
+                  className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
                   placeholder="Number of team members"
                 />
               </div>
@@ -213,7 +213,7 @@ const STPDetailPage = () => {
 
           <div>
             <h4 className="text-lg font-semibold mb-4 flex items-center">
-              <Users className="h-5 w-5 mr-2" />
+              <Users className="h-5 w-5 mr-2 text-green-400" />
               Contact Information
             </h4>
             <div className="space-y-4">
@@ -222,7 +222,7 @@ const STPDetailPage = () => {
                   <label className="block text-sm font-medium mb-2">Contact Person</label>
                   <input
                     type="text"
-                    className="w-full bg-forest-800 border border-forest-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
+                    className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
                     placeholder="Full name"
                   />
                 </div>
@@ -230,7 +230,7 @@ const STPDetailPage = () => {
                   <label className="block text-sm font-medium mb-2">Position</label>
                   <input
                     type="text"
-                    className="w-full bg-forest-800 border border-forest-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
+                    className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
                     placeholder="Job title"
                   />
                 </div>
@@ -239,7 +239,7 @@ const STPDetailPage = () => {
                 <label className="block text-sm font-medium mb-2">Email</label>
                 <input
                   type="email"
-                  className="w-full bg-forest-800 border border-forest-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
+                  className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
                   placeholder="Email address"
                 />
               </div>
@@ -247,7 +247,7 @@ const STPDetailPage = () => {
                 <label className="block text-sm font-medium mb-2">Phone</label>
                 <input
                   type="tel"
-                  className="w-full bg-forest-800 border border-forest-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
+                  className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
                   placeholder="Phone number"
                 />
               </div>
@@ -256,13 +256,13 @@ const STPDetailPage = () => {
 
           <div>
             <h4 className="text-lg font-semibold mb-4 flex items-center">
-              <Building className="h-5 w-5 mr-2" />
+              <Building className="h-5 w-5 mr-2 text-green-400" />
               Space Requirements
             </h4>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium mb-2">Required Space</label>
-                <select className="w-full bg-forest-800 border border-forest-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500">
+                <select className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500">
                   <option value="">Select space requirement</option>
                   <option value="desk">Individual Desk</option>
                   <option value="small">Small Office (2-5 people)</option>
@@ -272,7 +272,7 @@ const STPDetailPage = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2">Move-in Timeline</label>
-                <select className="w-full bg-forest-800 border border-forest-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500">
+                <select className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500">
                   <option value="">Select timeline</option>
                   <option value="immediate">Immediate</option>
                   <option value="1month">Within 1 month</option>
@@ -287,14 +287,14 @@ const STPDetailPage = () => {
             <label className="block text-sm font-medium mb-2">Additional Requirements</label>
             <textarea
               rows={4}
-              className="w-full bg-forest-800 border border-forest-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
+              className="w-full bg-dark-greenish-gray border border-green-700 rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary-500"
               placeholder="Any specific requirements or questions..."
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-primary-600 hover:bg-primary-700 py-3 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
+            className="w-full bg-green-600 hover:bg-green-700 py-3 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
           >
             <Rocket className="h-5 w-5" />
             Submit Application
