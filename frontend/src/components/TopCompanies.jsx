@@ -29,7 +29,7 @@ const TopCompanies = () => {
   ];
 
   return (
-    <section className="py-20 bg-dark-greenish-gray">
+    <section className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -48,7 +48,7 @@ const TopCompanies = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="bg-black rounded-xl overflow-hidden group hover:transform hover:scale-105 transition-transform duration-300"
+              className="bg-dark-greenish-gray rounded-xl overflow-hidden group hover:transform hover:scale-105 transition-transform duration-300"
               loading='lazy'
               >
               <div className="relative h-48">

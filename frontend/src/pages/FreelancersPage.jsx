@@ -30,7 +30,7 @@ const FreelancersPage = () => {
     },
     {
       id: 3,
-      name: 'Michael Chen',
+      name: 'David Chen',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80',
       skills: ['UI/UX', 'Figma', 'Adobe XD'],
       rating: 4.8,
@@ -40,7 +40,7 @@ const FreelancersPage = () => {
     },
     {
       id: 4,
-      name: 'Michael Chen',
+      name: 'Michael Clarke',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80',
       skills: ['UI/UX', 'Figma', 'Adobe XD'],
       rating: 4.8,
@@ -50,7 +50,7 @@ const FreelancersPage = () => {
     },
     {
       id: 5,
-      name: 'Sarah Johnson',
+      name: 'Maria Johnson',
       image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80',
       skills: ['React', 'Node.js', 'TypeScript'],
       rating: 4.9,

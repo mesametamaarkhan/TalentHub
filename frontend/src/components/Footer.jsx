@@ -1,6 +1,5 @@
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-import logo from '../assets/logo.png';
 
 const Footer = () => {
   const links = {
@@ -31,11 +30,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
           <div className="flex items-center pb-2">
-            <img
-              src={logo}
-              alt="TalentHub Logo"
-              className="h-14 w-auto" // Adjust height and width as needed
-            />
+            <span className="text-xl font-bold ml-2">TalentHub</span>
           </div>
             <p className="text-gray-400 mb-4">Connecting talent with opportunities worldwide.</p>
             <div className="flex space-x-4">

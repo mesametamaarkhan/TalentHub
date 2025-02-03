@@ -1,7 +1,6 @@
 import React from 'react';
 import { Menu, X, Bell, User } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -13,11 +12,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <img
-              src={logo}
-              alt="TalentHub Logo"
-              className="h-12 w-auto"
-            />
+            <span className="text-xl font-bold ml-2">TalentHub</span>
           </div>
 
           {/* Desktop Menu */}
@@ -43,24 +38,6 @@ const Navbar = () => {
               className="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium text-white"
             >
               Internships
-            </a>
-            <a
-              href="/tech-leads"
-              className="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium text-white"
-            >
-              Tech Leads
-            </a>
-            <a
-              href="/success-stories"
-              className="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium text-white"
-            >
-              Success Stories
-            </a>
-            <a
-              href="/events"
-              className="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium text-white"
-            >
-              Events
             </a>
 
             {/* Icons */}
@@ -115,24 +92,6 @@ const Navbar = () => {
               className="hover:text-green-400 block px-3 py-2 rounded-md text-base font-medium text-white"
             >
               Internships
-            </a>
-            <a
-              href="/tech-leads"
-              className="hover:text-green-400 block px-3 py-2 rounded-md text-base font-medium text-white"
-            >
-              Tech Leads
-            </a>
-            <a
-              href="/success-stories"
-              className="hover:text-green-400 block px-3 py-2 rounded-md text-base font-medium text-white"
-            >
-              Success Stories
-            </a>
-            <a
-              href="/events"
-              className="hover:text-green-400 block px-3 py-2 rounded-md text-base font-medium text-white"
-            >
-              Events
             </a>
 
             {/* Notification and User Icons in Mobile Menu */}
