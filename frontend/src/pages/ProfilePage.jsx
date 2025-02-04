@@ -1,44 +1,150 @@
-import React, { useState } from 'react';
-import { User, Briefcase, Link as LinkIcon, Settings, Users, Star, MapPin, Mail, Phone, Globe } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { User, Mail, Link2, Wrench, Star, Globe } from 'lucide-react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import CollapsibleSection from '../components/CollapsibleSection';
 
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState('overview');
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    bio: '',
+    skills: [],
+    portfolioLinks: '',
+  });
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    bio: '',
+    skills: '',
+    portfolioLinks: '',
+  });
   
-  // Mock user data - in a real app, this would come from your backend
-  const user = {
-    type: 'company', // or 'company' or 'internee'
-    name: 'Sarah Johnson',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80',
-    title: 'Senior Full Stack Developer',
-    location: 'San Francisco, CA',
-    email: 'sarah@example.com',
-    phone: '+1 (555) 123-4567',
-    website: 'www.sarahjohnson.dev',
-    bio: 'Passionate full-stack developer with 5+ years of experience in building scalable web applications.',
-    skills: ['React', 'Node.js', 'TypeScript', 'MongoDB', 'AWS'],
-    rating: 4.9,
-    completedProjects: 45,
-    portfolio: [
-      {
-        id: 1,
-        title: 'E-commerce Platform',
-        description: 'Built a full-featured e-commerce platform using MERN stack.',
-        image: 'https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80',
-        link: '#'
-      },
-      // Add more portfolio items
-    ],
-    workHistory: [
-      {
-        id: 1,
-        company: 'TechCorp',
-        role: 'Senior Developer',
-        duration: '2020 - Present',
-        description: 'Led development of multiple high-impact projects.'
-      },
-      // Add more work history items
-    ]
+  const [passwordFormData, setPasswordFormData] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: '',
+  });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const token = localStorage.getItem('accessToken');
+        const response = await axios.get(`http://localhost:8080/users/profile/${user.id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        setUser(response.data.user);
+        setFormData({
+          name: response.data.user.name,
+          email: response.data.user.email,
+          bio: response.data.user.bio,
+          skills: response.data.user.skills.join(', '),
+          portfolioLinks: response.data.user.portfolioLinks,
+        });
+      }
+      catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handlePasswordChange = (e) => {
+    setPasswordFormData({
+      ...passwordFormData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleProfileSubmit = async (e) => {
+    e.preventDefault();
+
+    console.log(formData.skills);
+
+    let updatedSkills = formData.skills;
+
+    // Check if skills is a string (and not an array), then split it
+    if (typeof updatedSkills === 'string') {
+      updatedSkills = updatedSkills.split(',').map((skill) => skill.trim()).filter(Boolean);
+    }
+
+    const updatedFormData = {
+      ...formData,
+      skills: updatedSkills,  // Update skills to be an array, even if unchanged
+    };
+
+    try {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const token = localStorage.getItem('accessToken');
+      
+      const response = await axios.put(`http://localhost:8080/users/profile/${user.id}`, updatedFormData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.status === 200) {
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+        setUser(response.data.user);
+      }
+      window.location.reload();
+    } catch (error) {
+      console.error('Error updating profile', error);
+    }
+  };
+
+  const handlePasswordSubmit = async (e) => {
+    e.preventDefault();
+
+    const { currentPassword, newPassword, confirmPassword } = passwordFormData;
+
+    if (newPassword !== confirmPassword) {
+      alert("New password and confirmation don't match.");
+      return;
+    }
+
+    if (newPassword.length < 6) {
+      alert("Password should be at least 6 characters.");
+      return;
+    }
+
+    try {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const token = localStorage.getItem('accessToken');
+
+      const response = await axios.put(
+        `http://localhost:8080/users/password/${user.id}`,
+        { currentPassword, newPassword },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        alert('Password changed successfully!');
+      }
+      window.location.reload();
+    } catch (error) {
+      console.error('Error changing password', error);
+      alert('Failed to change password. Please try again.');
+    }
   };
 
   const renderTabContent = () => {
@@ -66,124 +172,111 @@ const ProfilePage = () => {
                 ))}
               </div>
             </div>
-
-            {/* Work History */}
-            <div className="bg-black rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4">Work History</h3>
-              <div className="space-y-6">
-                {user.workHistory.map((work) => (
-                  <div key={work.id} className="border-l-2 border-green-600 pl-4">
-                    <h4 className="font-semibold">{work.role}</h4>
-                    <p className="text-green-400">{work.company}</p>
-                    <p className="text-sm text-white">{work.duration}</p>
-                    <p className="mt-2 text-white">{work.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        );
-
-      case 'portfolio':
-        return (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {user.portfolio.map((project) => (
-              <div key={project.id} className="bg-black rounded-lg overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-white mb-4">{project.description}</p>
-                  <a
-                    href={project.link}
-                    className="text-green-400 hover:text-green-300 inline-flex items-center"
-                  >
-                    View Project <LinkIcon className="ml-2 h-4 w-4" />
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        );
-
-      case 'connections':
-        return (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Add connection cards here */}
           </div>
         );
 
       case 'settings':
         return (
-          <div className="space-y-6">
-            {/* Profile Details Section */}
+          <>
             <CollapsibleSection title="Profile Details">
-              <form className="space-y-4">
-                <div className="flex flex-col">
-                  <label className="text-white mb-1">Profession</label>
-                  <input
-                    type="text"
-                    className="bg-dark-greenish-gray text-white rounded-lg p-2"
-                    defaultValue={user.title}
-                  />
-                </div>
+                {/* Profile Details Section */}
+                <div className="bg-black rounded-lg p-8">
+                  <form onSubmit={handleProfileSubmit} className="space-y-6">
+                    {/* Name Field */}
+                    <div className="relative">
+                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-green-400" />
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        required
+                        className="block w-full pl-10 pr-3 py-2 bg-dark-greenish-gray border border-white rounded-lg focus:ring-2 focus:ring-white focus:border-transparent"
+                        placeholder="Enter your name"
+                        value={formData.name}
+                        onChange={handleChange}
+                      />
+                    </div>
 
-                <div className="flex flex-col">
-                  <label className="text-white mb-1">Location</label>
-                  <input
-                    type="text"
-                    className="bg-dark-greenish-gray text-white rounded-lg p-2"
-                    defaultValue={user.location}
-                  />
-                </div>
+                    {/* Email Field */}
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-green-400" />
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        className="block w-full pl-10 pr-3 py-2 bg-dark-greenish-gray border border-forest-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                        placeholder="Enter your email"
+                        value={formData.email}
+                        onChange={handleChange}
+                      />
+                    </div>
 
-                <div className="flex flex-col">
-                  <label className="text-white mb-1">Phone</label>
-                  <input
-                    type="tel"
-                    placeholder='+1 (555) 123-4567'
-                    className="bg-dark-greenish-gray text-white rounded-lg p-2"
-                    defaultValue={user.phone}
-                  />
-                </div>
+                    {/* Bio Field */}
+                    <div className="relative">
+                      <Wrench className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-green-400" />
+                      <textarea
+                        id="bio"
+                        name="bio"
+                        className="block w-full pl-10 pr-3 py-2 bg-dark-greenish-gray border border-forest-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                        placeholder="Tell us about yourself"
+                        value={formData.bio}
+                        onChange={handleChange}
+                      />
+                    </div>
 
-                <div className="flex flex-col">
-                  <label className="text-white mb-1">Email</label>
-                  <input
-                    type="email"
-                    placeholder='youremail@example.com'
-                    className="bg-dark-greenish-gray text-white rounded-lg p-2"
-                    defaultValue={user.email}
-                  />
-                </div>
+                    {/* Skills Field */}
+                    <div className="relative">
+                      <Wrench className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-green-400" />
+                      <input
+                        id="skills"
+                        name="skills"
+                        type="text"
+                        className="block w-full pl-10 pr-3 py-2 bg-dark-greenish-gray border border-forest-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                        placeholder="Skills (e.g., React, Node.js, MongoDB)"
+                        value={formData.skills}
+                        onChange={(e) => setFormData({ 
+                          ...formData, 
+                          skills: e.target.value.split(',').map(skill => skill.trim())
+                        })}
+                      />
+                    </div>
 
-                <div className="flex flex-col">
-                  <label className="text-white mb-1">Website</label>
-                  <input
-                    type="url"
-                    placeholder='www.your-website.com'
-                    className="bg-dark-greenish-gray text-white rounded-lg p-2"
-                    defaultValue={user.website}
-                  />
-                </div>
+                    {/* Portfolio Link Field */}
+                    <div className="relative">
+                      <Link2 className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-green-400" />
+                      <input
+                        id="portfolioLinks"
+                        name="portfolioLinks"
+                        type="text"
+                        className="block w-full pl-10 pr-3 py-2 bg-dark-greenish-gray border border-forest-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                        placeholder="Portfolio/GitHub Link"
+                        value={formData.portfolioLinks}
+                        onChange={handleChange}
+                      />
+                    </div>
 
-                <button className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300 text-white">
-                  Save Changes
-                </button>
-              </form>
+                    <button
+                      type="submit"
+                      className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300"
+                    >
+                      Save Changes
+                    </button>
+                  </form>
+                </div>
             </CollapsibleSection>
 
             {/* Change Password Section */}
             <CollapsibleSection title="Change Password">
-              <form className="space-y-4">
+              <form onSubmit={handlePasswordSubmit} className="space-y-4">
                 <div className="flex flex-col">
                   <label className="text-white mb-1">Current Password</label>
                   <input
                     type="password"
+                    name="currentPassword"
                     placeholder='Enter current password'
+                    value={passwordFormData.currentPassword}
+                    onChange={handlePasswordChange}
                     className="bg-dark-greenish-gray text-white rounded-lg p-2"
                   />
                 </div>
@@ -192,7 +285,10 @@ const ProfilePage = () => {
                   <label className="text-white mb-1">New Password</label>
                   <input
                     type="password"
+                    name="newPassword"
                     placeholder='Enter new password'
+                    value={passwordFormData.newPassword}
+                    onChange={handlePasswordChange}
                     className="bg-dark-greenish-gray text-white rounded-lg p-2"
                   />
                 </div>
@@ -201,7 +297,10 @@ const ProfilePage = () => {
                   <label className="text-white mb-1">Confirm Password</label>
                   <input
                     type="password"
+                    name="confirmPassword"
                     placeholder='Confirm new password'
+                    value={passwordFormData.confirmPassword}
+                    onChange={handlePasswordChange}
                     className="bg-dark-greenish-gray text-white rounded-lg p-2"
                   />
                 </div>
@@ -211,54 +310,7 @@ const ProfilePage = () => {
                 </button>
               </form>
             </CollapsibleSection>
-
-            {/* Credit Card Details Section */}
-            <CollapsibleSection title="Credit Card Details">
-              <div className="space-y-4">
-                {/* List Existing Credit Cards */}
-                <div className="flex justify-between items-center bg-dark-greenish-gray rounded-lg p-4">
-                  <span className="text-white">**** **** **** 1234</span>
-                  <button className="text-red-500 hover:text-red-600">Remove</button>
-                </div>
-
-                {/* Add New Credit Card */}
-                <form className="space-y-4">
-                  <div className="flex flex-col">
-                    <label className="text-white mb-1">Card Number</label>
-                    <input
-                      type="text"
-                      className="bg-dark-greenish-gray text-white rounded-lg p-4"
-                      placeholder="Enter card number"
-                    />
-                  </div>
-
-                  <div className="flex space-x-4">
-                    <div className="flex flex-col">
-                      <label className="text-white mb-1">Expiry Date</label>
-                      <input
-                        type="text"
-                        className="bg-dark-greenish-gray text-white rounded-lg p-4"
-                        placeholder="MM/YY"
-                      />
-                    </div>
-
-                    <div className="flex flex-col">
-                      <label className="text-white mb-1">CVC</label>
-                      <input
-                        type="text"
-                        className="bg-dark-greenish-gray text-white rounded-lg p-4"
-                        placeholder="CVC"
-                      />
-                    </div>
-                  </div>
-
-                  <button className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300 text-white">
-                    Add Card
-                  </button>
-                </form>
-              </div>
-            </CollapsibleSection>
-          </div>
+         </>
         );
 
       default:
@@ -273,22 +325,18 @@ const ProfilePage = () => {
         <div className="bg-black rounded-lg p-6 mb-8">
           <div className="flex flex-col md:flex-row items-center md:items-start">
             <img
-              src={user.image}
+              src={user.profilePicture}
               alt={user.name}
               className="w-32 h-32 rounded-full object-cover mb-4 md:mb-0 md:mr-6"
             />
             <div className="text-center md:text-left">
               <h1 className="text-2xl font-bold mb-2">{user.name}</h1>
               <p className="text-white mb-4">{user.title}</p>
-              
+
               <div className="flex flex-wrap justify-center md:justify-start gap-4 text-white mb-4">
                 <div className="flex items-center">
-                  <MapPin className="h-4 w-4 mr-1" />
-                  {user.location}
-                </div>
-                <div className="flex items-center">
                   <Star className="h-4 w-4 mr-1 text-yellow-400" />
-                  {user.rating} ({user.completedProjects} projects)
+                  {user.rating}
                 </div>
               </div>
 
@@ -297,13 +345,9 @@ const ProfilePage = () => {
                   <Mail className="h-4 w-4 mr-1" />
                   {user.email}
                 </a>
-                <a href={`tel:${user.phone}`} className="flex items-center text-white hover:text-green-400">
-                  <Phone className="h-4 w-4 mr-1" />
-                  {user.phone}
-                </a>
-                <a href={`https://${user.website}`} className="flex items-center text-white hover:text-green-400">
+                <a href={`https://${user.portfolioLinks}`} className="flex items-center text-white hover:text-green-400">
                   <Globe className="h-4 w-4 mr-1" />
-                  {user.website}
+                  {user.portfolioLinks}
                 </a>
               </div>
             </div>
@@ -316,56 +360,19 @@ const ProfilePage = () => {
             <nav className="flex space-x-8">
               <button
                 onClick={() => setActiveTab('overview')}
-                className={`py-4 px-1 relative ${
-                  activeTab === 'overview'
-                    ? 'text-green-400 border-b-2 border-green-400'
-                    : 'text-gray-400 hover:text-gray-300'
-                }`}
+                className={`py-4 px-1 relative ${activeTab === 'overview' ? 'text-green-400 border-b-2 border-green-400' : 'text-gray-400 hover:text-gray-300'}`}
               >
                 <div className="flex items-center">
                   <User className="h-5 w-5 mr-2" />
                   Overview
                 </div>
               </button>
-              
-              <button
-                onClick={() => setActiveTab('portfolio')}
-                className={`py-4 px-1 relative ${
-                  activeTab === 'portfolio'
-                    ? 'text-green-400 border-b-2 border-green-400'
-                    : 'text-gray-400 hover:text-gray-300'
-                }`}
-              >
-                <div className="flex items-center">
-                  <Briefcase className="h-5 w-5 mr-2" />
-                  Portfolio
-                </div>
-              </button>
-              
-              <button
-                onClick={() => setActiveTab('connections')}
-                className={`py-4 px-1 relative ${
-                  activeTab === 'connections'
-                    ? 'text-green-400 border-b-2 border-green-400'
-                    : 'text-gray-400 hover:text-gray-300'
-                }`}
-              >
-                <div className="flex items-center">
-                  <Users className="h-5 w-5 mr-2" />
-                  Connections
-                </div>
-              </button>
-              
               <button
                 onClick={() => setActiveTab('settings')}
-                className={`py-4 px-1 relative ${
-                  activeTab === 'settings'
-                    ? 'text-green-400 border-b-2 border-green-400'
-                    : 'text-gray-400 hover:text-gray-300'
-                }`}
+                className={`py-4 px-1 relative ${activeTab === 'settings' ? 'text-green-400 border-b-2 border-green-400' : 'text-gray-400 hover:text-gray-300'}`}
               >
                 <div className="flex items-center">
-                  <Settings className="h-5 w-5 mr-2" />
+                  <Wrench className="h-5 w-5 mr-2" />
                   Settings
                 </div>
               </button>
@@ -374,9 +381,7 @@ const ProfilePage = () => {
         </div>
 
         {/* Tab Content */}
-        <div className="mb-12">
-          {renderTabContent()}
-        </div>
+        <div className="mb-12">{renderTabContent()}</div>
       </div>
     </div>
   );

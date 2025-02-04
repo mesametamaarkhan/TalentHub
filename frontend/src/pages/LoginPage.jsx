@@ -24,9 +24,10 @@ const LoginPage = () => {
       });
 
       if (response.status === 200) {
+        console.log(response.data.refreshToken);
         localStorage.setItem('accessToken', response.data.accessToken);
         localStorage.setItem('refreshToken', response.data.refreshToken);
-        localStorage.setItem('user', response.data.user)
+        localStorage.setItem('user', JSON.stringify(response.data.user));
         navigate('/'); // Redirect to homepage on success
       } 
       else if (response.status === 400) {

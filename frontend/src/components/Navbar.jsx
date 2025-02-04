@@ -48,7 +48,7 @@ const Navbar = () => {
                 <Bell className="h-5 w-5" />
               </button>
               <button
-                onClick={() => navigate('/f-profile/1')}
+                onClick={() => navigate(`/f-profile/1`)}
                 className="text-white hover:text-green-400 flex items-center justify-center"
               >
                 <User className="h-5 w-5" />

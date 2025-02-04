@@ -10,6 +10,7 @@ function Home() {
   return (
     <div className="min-h-screen bg-primary">
       <Suspense fallback={<div>Loading...</div>}> 
+        {console.log(JSON.parse(localStorage.getItem('user')))}
         <Hero />
         <WhoWeAreFor />
         <FreelanceProgram />

@@ -14,8 +14,11 @@ import FreelancerDetailPage from './pages/FreelancerDetailPage';
 import InternProfilePage from './pages/InternProfilePage';
 import CompanyProfilePage from './pages/CompanyProfilePage';
 import ScrollToTop from './components/ScrollToTop';
+import useTokenRefresher from './hooks/useTokenRefresher';
 
 const App = () => {
+  useTokenRefresher();
+
   return (
     <div>
       <Navbar />

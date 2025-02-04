@@ -171,7 +171,10 @@ const SignupPage = () => {
                 className="block w-full pl-10 pr-10 py-2 bg-dark-greenish-gray border border-forest-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                 placeholder="Skills: e.g., React, Node.js, MongoDB" 
                 value={formData.skills} 
-                onChange={(e) => setFormData({ ...formData, skills: e.target.value })}
+                onChange={(e) => setFormData({ 
+                  ...formData, 
+                  skills: e.target.value.split(',').map(skill => skill.trim())
+                })}
               />
             </div>
 
