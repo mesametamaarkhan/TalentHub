@@ -1,10 +1,6 @@
 import mongoose from 'mongoose';
 
 const userSchema = mongoose.Schema({
-    userId: {
-        type: String,
-        required: true
-    },
     name: {
         type: String,
         required: true
@@ -24,7 +20,7 @@ const userSchema = mongoose.Schema({
     },
     profilePicture: {
         type: String,
-        required: true
+        required: false
     },
     bio: {
         type: String,
@@ -46,7 +42,12 @@ const userSchema = mongoose.Schema({
         type: Number, //0-5
         default: 0,
         required: false
-    }
+    },
+    refreshToken: {
+        type: String,
+        default: null,
+        required: false,
+    },
 });
 
 export const User = mongoose.model('user', userSchema);
