@@ -22,10 +22,10 @@ const Navbar = () => {
               Home
             </a>
             <a
-              href="/freelancers"
+              href="/gigs"
               className="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium text-white"
             >
-              Freelancers
+              Gigs
             </a>
             <a
               href="/companies"

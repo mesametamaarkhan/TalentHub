@@ -25,13 +25,13 @@ const App = () => {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/freelancers" element={<FreelancersPage />} />
+          <Route path="/gigs" element={<FreelancersPage />} />
           <Route path="/internships" element={<InternshipsPage />} />
           <Route path="/companies" element={<CompaniesPage />} />
           <Route path="/f-profile/:id" element={<ProfilePage />} />
           <Route path="/i-profile/:id" element={<InternProfilePage />} />
           <Route path="/c-profile/:id" element={<CompanyProfilePage />} />
-          <Route path="/freelancer/:id" element={<FreelancerDetailPage />} />
+          <Route path="/gig/:id" element={<FreelancerDetailPage />} />
           <Route path="/internship/:id" element={<InternshipDetailPage />} />
           <Route path="/company/:id" element={<CompanyDetailPage />} />
           <Route path="/login" element={<LoginPage />} />

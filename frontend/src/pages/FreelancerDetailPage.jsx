@@ -1,199 +1,104 @@
-import React, { useState } from 'react';
-import { User, Briefcase, Link as LinkIcon, Star, MapPin, Mail, Phone, Globe } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Link as LinkIcon, Briefcase, MapPin, DollarSign } from 'lucide-react';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { Gig } from '../../../backend/models/GigModel';
 
 const FreelancerDetailPage = () => {
-  const [activeTab, setActiveTab] = useState('overview');
-  
-  const freelancer = {
-    name: 'Sarah Johnson',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80',
-    title: 'Senior Full Stack Developer',
-    location: 'San Francisco, CA',
-    email: 'sarah@example.com',
-    phone: '+1 (555) 123-4567',
-    website: 'www.sarahjohnson.dev',
-    bio: 'Passionate full-stack developer with 5+ years of experience in building scalable web applications.',
-    skills: ['React', 'Node.js', 'TypeScript', 'MongoDB', 'AWS'],
-    rating: 4.9,
-    completedProjects: 45,
-    portfolio: [
-      {
-        id: 1,
-        title: 'E-commerce Platform',
-        description: 'Built a full-featured e-commerce platform using MERN stack.',
-        image: 'https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80',
-        link: '#'
-      },
-      // Add more portfolio items
-    ],
-    workHistory: [
-      {
-        id: 1,
-        company: 'TechCorp',
-        role: 'Senior Developer',
-        duration: '2020 - Present',
-        description: 'Led development of multiple high-impact projects.'
-      },
-      // Add more work history items
-    ]
-  };
+  const [gig, setGig] = useState(null);
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  const renderTabContent = () => {
-    switch (activeTab) {
-      case 'overview':
-        return (
-          <div className="space-y-8">
-            {/* Bio Section */}
-            <div className="bg-black rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4">About</h3>
-              <p className="text-white">{freelancer.bio}</p>
-            </div>
+  useEffect(() => {
+    const fetchGigDetail = async () => {
+      try {
+        const token = localStorage.getItem('accessToken');
+        console.log(id);
+        const response = await axios.get(`http://localhost:8080/gigs/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-            {/* Skills Section */}
-            <div className="bg-black rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4">Skills</h3>
-              <div className="flex flex-wrap gap-2">
-                {freelancer.skills.map((skill, index) => (
-                  <span
-                    key={index}
-                    className="bg-green-600 px-3 py-1 rounded-full text-sm"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
+        if (response.status === 200) {
+          setGig(response.data.gig);
+          console.log(gig);
+        } 
+        else {
+          console.error('Error fetching gig details');
+          navigate('/gigs');
+        }
+      } catch (error) {
+        console.error('Error fetching gig details:', error);
+        navigate('/gigs');
+      }
+    };
 
-            {/* Work History */}
-            <div className="bg-black rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4">Work History</h3>
-              <div className="space-y-6">
-                {freelancer.workHistory.map((work) => (
-                  <div key={work.id} className="border-l-2 border-green-600 pl-4">
-                    <h4 className="font-semibold">{work.role}</h4>
-                    <p className="text-green-400">{work.company}</p>
-                    <p className="text-sm text-white">{work.duration}</p>
-                    <p className="mt-2 text-white">{work.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        );
+    fetchGigDetail();
+  }, [id, navigate]);
 
-      case 'portfolio':
-        return (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {freelancer.portfolio.map((project) => (
-              <div key={project.id} className="bg-black rounded-lg overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-white mb-4">{project.description}</p>
-                  <a
-                    href={project.link}
-                    className="text-green-400 hover:text-green-300 inline-flex items-center"
-                  >
-                    View Project <LinkIcon className="ml-2 h-4 w-4" />
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        );
-
-      default:
-        return null;
-    }
-  };
+  if (!gig) return <div>Loading...</div>;
 
   return (
     <div className="min-h-screen bg-dark-greenish-gray pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Profile Header */}
+        {/* Gig Header */}
         <div className="bg-black rounded-lg p-6 mb-8">
           <div className="flex flex-col md:flex-row items-center md:items-start">
-            <img
-              src={freelancer.image}
-              alt={freelancer.name}
-              className="w-32 h-32 rounded-full object-cover mb-4 md:mb-0 md:mr-6"
-            />
             <div className="text-center md:text-left">
-              <h1 className="text-2xl font-bold mb-2">{freelancer.name}</h1>
-              <p className="text-white mb-4">{freelancer.title}</p>
-              
-              <div className="flex flex-wrap justify-center md:justify-start gap-4 text-white mb-4">
+              <h1 className="text-2xl font-bold mb-2">{gig.title}</h1>
+              <p className="text-white mb-4">Budget: ${gig.budget}</p>
+              <div className="flex flex-wrap gap-4 text-white mb-4">
                 <div className="flex items-center">
                   <MapPin className="h-4 w-4 mr-1" />
-                  {freelancer.location}
+                  {gig.location || "Remote"}
                 </div>
                 <div className="flex items-center">
-                  <Star className="h-4 w-4 mr-1 text-yellow-400" />
-                  {freelancer.rating} ({freelancer.completedProjects} projects)
+                  <DollarSign className="h-4 w-4 mr-1" />
+                  {gig.paymentType || "Fixed"}
                 </div>
-              </div>
-
-              <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm">
-                <a href={`mailto:${freelancer.email}`} className="flex items-center text-white hover:text-green-400">
-                  <Mail className="h-4 w-4 mr-1" />
-                  {freelancer.email}
-                </a>
-                <a href={`tel:${freelancer.phone}`} className="flex items-center text-white hover:text-green-400">
-                  <Phone className="h-4 w-4 mr-1" />
-                  {freelancer.phone}
-                </a>
-                <a href={`https://${freelancer.website}`} className="flex items-center text-white hover:text-green-400">
-                  <Globe className="h-4 w-4 mr-1" />
-                  {freelancer.website}
-                </a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Profile Tabs */}
-        <div className="mb-8">
-          <div className="border-b border-gray-700">
-            <nav className="flex space-x-8">
-              <button
-                onClick={() => setActiveTab('overview')}
-                className={`py-4 px-1 relative ${
-                  activeTab === 'overview'
-                    ? 'text-green-400 border-b-2 border-green-400'
-                    : 'text-gray-400 hover:text-gray-300'
-                }`}
+        {/* Gig Details */}
+        <div className="bg-black rounded-lg p-6 mb-8">
+          <h3 className="text-xl font-semibold mb-4">Description</h3>
+          <p className="text-white">{gig.description}</p>
+        </div>
+
+        {/* Skills Required */}
+        <div className="bg-black rounded-lg p-6 mb-8">
+          <h3 className="text-xl font-semibold mb-4">Skills Required</h3>
+          <div className="flex flex-wrap gap-2">
+            {gig.skillsRequired.map((skill, index) => (
+              <span
+                key={index}
+                className="bg-green-600 px-3 py-1 rounded-full text-sm"
               >
-                <div className="flex items-center">
-                  <User className="h-5 w-5 mr-2" />
-                  Overview
-                </div>
-              </button>
-              
-              <button
-                onClick={() => setActiveTab('portfolio')}
-                className={`py-4 px-1 relative ${
-                  activeTab === 'portfolio'
-                    ? 'text-green-400 border-b-2 border-green-400'
-                    : 'text-gray-400 hover:text-gray-300'
-                }`}
-              >
-                <div className="flex items-center">
-                  <Briefcase className="h-5 w-5 mr-2" />
-                  Portfolio
-                </div>
-              </button>
-            </nav>
+                {skill}
+              </span>
+            ))}
           </div>
         </div>
 
-        {/* Tab Content */}
-        <div className="mb-12">
-          {renderTabContent()}
-        </div>
+        {/* Client Information */}
+        {gig.client && (
+          <div className="bg-black rounded-lg p-6 mb-8">
+            <h3 className="text-xl font-semibold mb-4">Client Information</h3>
+            <p className="text-white">Name: {gig.client.name}</p>
+            <p className="text-white">Email: {gig.client.email}</p>
+          </div>
+        )}
+
+        {/* Back to Gigs Button */}
+        <button
+          onClick={() => navigate('/gigs')}
+          className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center"
+        >
+          Back to Gigs
+        </button>
       </div>
     </div>
   );

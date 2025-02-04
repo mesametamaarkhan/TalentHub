@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
 const gigSchema = mongoose.Schema({
-    gigId: {
-        type: String,
-        required: true
-    },
     title: {
         type: String,
         required: true
@@ -18,7 +14,8 @@ const gigSchema = mongoose.Schema({
         required: true
     },
     employerId: {
-        type: String, //reference
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'users', 
         required: true
     },
     budget: {
@@ -30,9 +27,10 @@ const gigSchema = mongoose.Schema({
         required: true
     },
     assignedFreelancer: {
-        type: String,    //reference
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'users', 
         default: null,
-        required: true
+        required: false
     },
     skillsRequired: {
         type: [String],
