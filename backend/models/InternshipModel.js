@@ -18,12 +18,8 @@ const internshipSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    startDate: {
-        type: Date,
-        required: true
-    },
-    endDate: {
-        type: Date,
+    duration: {
+        type: Number,
         required: true
     },
     availableSeats: {

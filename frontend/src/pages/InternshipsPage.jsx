@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Filter } from 'lucide-react';
+import { Search, Plus, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Modal from 'react-modal';
+import InternshipForm from '../components/InternshipForm';
 import robin from '../assets/robin.jpg';
 
 const InternshipsPage = () => {
   const navigate = useNavigate();
-  const [showFilters, setShowFilters] = useState(true);
   const [internships, setInternships] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredInternships, setFilteredInternships] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     const fetchInternships = async () => {
@@ -63,6 +65,13 @@ const InternshipsPage = () => {
     navigate(`/internship/${id}`);
   };
 
+  const handleAddInternship = (newInternship) => {
+    setInternships([ ...internships, newInternship ]);
+    setFilteredInternships([ ...internships, newInternship]);
+    setModalIsOpen(false);
+    window.location.reload();
+  };
+
   return (
     <div className="min-h-screen bg-dark-greenish-gray pt-20 px-4 sm:px-6 lg:px-8 pb-10">
       <div className="max-w-7xl mx-auto">
@@ -88,10 +97,10 @@ const InternshipsPage = () => {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white" />
           </div>
           <button
-            onClick={() => setShowFilters(!showFilters)}
-            className={`p-2 rounded-lg ${showFilters ? 'bg-green-600' : 'bg-black'} transition-colors`}
+            onClick={() => setModalIsOpen(true)}
+            className={`p-2 rounded-lg bg-black hover:bg-green-600 transition-colors`}
           >
-            <Filter className="h-5 w-5 text-white" />
+            <Plus className="h-5 w-5 text-white" />
           </button>
         </div>
 
@@ -141,6 +150,24 @@ const InternshipsPage = () => {
             </div>
           ))}
         </div>
+
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={() => setModalIsOpen(false)}
+          className='fixed inset-0 flex items-center justify-center bg-dark-greenish-gray/50'
+        >
+          <div className='bg-black p-6 rounded-lg shadow-lg w-full max-w-lg relative'>
+            <button 
+              onClick={() => setModalIsOpen(false)}
+              className='absolute top-2 right-2 text-white bg-transparent border-0 p-2'
+            >
+              <X size={24} />
+            </button>
+            <h2 className='text-xl font-semibold mb-4'>Add New Internship</h2>
+            <InternshipForm onInternshipAdded={handleAddInternship} />
+          </div>
+
+        </Modal>
       </div>
     </div>
   );

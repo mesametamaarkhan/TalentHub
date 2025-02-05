@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link as LinkIcon, Briefcase, MapPin, DollarSign } from 'lucide-react';
+import { MapPin, Clock } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -50,8 +50,8 @@ const InternshipDetailPage = () => {
                   {internship.location || "Remote"}
                 </div>
                 <div className="flex items-center">
-                  <Briefcase className="h-4 w-4 mr-1" />
-                  Start Date: {internship.startDate.split('T')[0]} - End Date: {internship.endDate.split('T')[0]}
+                  <Clock className="h-4 w-4 mr-1" />
+                  {internship.duration} months
                 </div>
               </div>
             </div>

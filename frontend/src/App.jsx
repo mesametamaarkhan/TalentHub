@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import GigsPage from './pages/FreelancersPage';
 import InternshipsPage from './pages/InternshipsPage';
 import ProfilePage from './pages/ProfilePage';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import InternshipDetailPage from './pages/InternshipDetailPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';

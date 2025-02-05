@@ -7,13 +7,13 @@ const router = express.Router();
 //internships creation route
 router.post('/create-internship', authenticateToken, async (req, res) => {
     if(!req.body.title || !req.body.description || !req.body.location || !req.body.employerId ||
-        !req.body.startDate || !req.body.endDate || !req.body.skillsRequired || !req.body.availableSeats || 
+        !req.body.duration || !req.body.skillsRequired || !req.body.availableSeats || 
         !req.body.stipend || !req.body.status
     ) {
         return res.status(400).json({ message: 'Some required fields are missing!!!' });
     }
 
-    const { title, description, location, employerId, startDate, endDate, skillsRequired, availableSeats, stipend, status } = req.body;
+    const { title, description, location, employerId, duration, skillsRequired, availableSeats, stipend, status } = req.body;
 
     try {
         const newInternship =  new Internship({
@@ -21,8 +21,7 @@ router.post('/create-internship', authenticateToken, async (req, res) => {
             description,
             location,
             employerId,
-            startDate,
-            endDate, 
+            duration,
             skillsRequired,
             availableSeats,
             stipend,
