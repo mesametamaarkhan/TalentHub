@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link as LinkIcon, Briefcase, MapPin, DollarSign } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Gig } from '../../../backend/models/GigModel';
 
 const FreelancerDetailPage = () => {
   const [gig, setGig] = useState(null);

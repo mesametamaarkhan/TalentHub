@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
 const internshipSchema = mongoose.Schema({
-    internshipId: {
-        type: String,
-        required: true
-    },
     title: {
         type: String,
         required: true
@@ -14,7 +10,8 @@ const internshipSchema = mongoose.Schema({
         required: true
     },
     employerId: {
-        type: String,  //reference
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'users', 
         required: true
     },
     location: {
@@ -34,13 +31,15 @@ const internshipSchema = mongoose.Schema({
         required: true
     },
     assignedCandidates: {
-        type: [String],
-        required: true
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'users',
+        default: [],
+        required: false
     },
     stipend: {
         type: Number,
         default: 0,
-        required: false
+        required: true
     },
     skillsRequired: {
         type: [String],

@@ -5,7 +5,7 @@ const useTokenRefresher = () => {
   useEffect(() => {
     const refreshInterval = setInterval(() => {
       refreshAccessToken();
-    }, 15 * 10 * 1000); // 15 minutes
+    }, 15 * 60 * 1000); // 15 minutes
 
     // Cleanup interval on component unmount
     return () => clearInterval(refreshInterval);

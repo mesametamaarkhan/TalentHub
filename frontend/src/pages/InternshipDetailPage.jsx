@@ -1,129 +1,103 @@
-import { useState } from "react";
+import React, { useState, useEffect } from 'react';
+import { Link as LinkIcon, Briefcase, MapPin, DollarSign } from 'lucide-react';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const InternshipDetailPage = () => {
-    const [activeTab, setActiveTab] = useState('overview');
-    
-    // Mock internship data
-    const internship = {
-      title: 'Software Development Intern',
-      companyName: 'TechCorp',
-      location: 'San Francisco, CA',
-      duration: '3 months',
-      stipend: '$3000/month',
-      description: 'Join our development team to build next-gen web applications.',
-      responsibilities: [
-        'Assist in coding and testing features',
-        'Collaborate with senior developers on projects',
-        'Write technical documentation'
-      ],
-      requirements: [
-        'Basic knowledge of JavaScript',
-        'Familiarity with React or Node.js',
-        'Interest in software development'
-      ],
-      applicationLink: '#'
-    };
-  
-    const renderTabContent = () => {
-      switch (activeTab) {
-        case 'overview':
-          return (
-            <div className="space-y-8">
-              {/* Internship Description */}
-              <div className="bg-black rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-4">Description</h3>
-                <p className="text-white">{internship.description}</p>
-              </div>
-  
-              {/* Responsibilities */}
-              <div className="bg-black rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-4">Responsibilities</h3>
-                <ul className="list-disc pl-5 text-white">
-                  {internship.responsibilities.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-  
-              {/* Requirements */}
-              <div className="bg-black rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-4">Requirements</h3>
-                <ul className="list-disc pl-5 text-white">
-                  {internship.requirements.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          );
-  
-        case 'apply':
-          return (
-            <div className="bg-black rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4">How to Apply</h3>
-              <p className="text-white">Please submit your application via the link below:</p>
-              <a
-                href={internship.applicationLink}
-                className="text-green-400 hover:text-blue-300"
-              >
-                Apply Now
-              </a>
-            </div>
-          );
-  
-        default:
-          return null;
+  const [internship, setInternship] = useState(null);
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchInternshipDetail = async () => {
+      try {
+        const token = localStorage.getItem('accessToken');
+        const response = await axios.get(`http://localhost:8080/internships/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.status === 200) {
+          setInternship(response.data.internship);
+        } else {
+          console.error('Error fetching internship details');
+          navigate('/internships');
+        }
+      } catch (error) {
+        console.error('Error fetching internship details:', error);
+        navigate('/internships');
       }
     };
-    
-    return (
-      <div className="min-h-screen bg-dark-greenish-gray pt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Internship Header */}
-          <div className="bg-black rounded-lg p-6 mb-8">
-            <h1 className="text-2xl font-bold mb-4">{internship.title}</h1>
-            <p className="text-white mb-4">{internship.companyName}</p>
-            <div className="flex gap-8 text-white mb-4">
-              <div>{internship.location}</div>
-              <div>{internship.duration}</div>
-              <div>{internship.stipend}</div>
+
+    fetchInternshipDetail();
+  }, [id, navigate]);
+
+  if (!internship) return <div>Loading...</div>;
+
+  return (
+    <div className="min-h-screen bg-dark-greenish-gray pt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Internship Header */}
+        <div className="bg-black rounded-lg p-6 mb-8">
+          <div className="flex flex-col md:flex-row items-center md:items-start">
+            <div className="text-center md:text-left">
+              <h1 className="text-2xl font-bold mb-2">{internship.title}</h1>
+              <p className="text-white mb-4">Stipend: ${internship.stipend || 'Unpaid'}</p>
+              <div className="flex flex-wrap gap-4 text-white mb-4">
+                <div className="flex items-center">
+                  <MapPin className="h-4 w-4 mr-1" />
+                  {internship.location || "Remote"}
+                </div>
+                <div className="flex items-center">
+                  <Briefcase className="h-4 w-4 mr-1" />
+                  Start Date: {internship.startDate.split('T')[0]} - End Date: {internship.endDate.split('T')[0]}
+                </div>
+              </div>
             </div>
           </div>
-  
-          {/* Internship Tabs */}
-          <div className="mb-8">
-            <div className="border-b border-gray-700">
-              <nav className="flex space-x-8">
-                <button
-                  onClick={() => setActiveTab('overview')}
-                  className={`py-4 px-1 relative ${
-                    activeTab === 'overview'
-                      ? 'text-green-400 border-b-2 border-green-400'
-                      : 'text-gray-400 hover:text-gray-300'
-                  }`}
-                >
-                  Overview
-                </button>
-                <button
-                  onClick={() => setActiveTab('apply')}
-                  className={`py-4 px-1 relative ${
-                    activeTab === 'apply'
-                      ? 'text-green-400 border-b-2 border-green-400'
-                      : 'text-gray-400 hover:text-gray-300'
-                  }`}
-                >
-                  Apply
-                </button>
-              </nav>
-            </div>
-          </div>
-  
-          {/* Tab Content */}
-          <div className="mb-12">{renderTabContent()}</div>
         </div>
+
+        {/* Internship Details */}
+        <div className="bg-black rounded-lg p-6 mb-8">
+          <h3 className="text-xl font-semibold mb-4">Description</h3>
+          <p className="text-white">{internship.description}</p>
+        </div>
+
+        {/* Skills Required */}
+        <div className="bg-black rounded-lg p-6 mb-8">
+          <h3 className="text-xl font-semibold mb-4">Skills Required</h3>
+          <div className="flex flex-wrap gap-2">
+            {internship.skillsRequired.map((skill, index) => (
+              <span
+                key={index}
+                className="bg-green-600 px-3 py-1 rounded-full text-sm"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Company Information
+        {internship.company && (
+          <div className="bg-black rounded-lg p-6 mb-8">
+            <h3 className="text-xl font-semibold mb-4">Company Information</h3>
+            <p className="text-white">Name: {internship.company.name}</p>
+            <p className="text-white">Email: {internship.company.email}</p>
+          </div>
+        )} */}
+
+        {/* Back to Internships Button */}
+        <button
+          onClick={() => navigate('/internships')}
+          className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center"
+        >
+          Back to Internships
+        </button>
       </div>
-    );
-  };
-  
-  export default InternshipDetailPage;
-  
+    </div>
+  );
+};
+
+export default InternshipDetailPage;

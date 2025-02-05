@@ -3,26 +3,29 @@ import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
-const TopCompanies = () => {
+const TopInternships = () => {
   const navigate = useNavigate();
 
   const handleNavigate = (link) => {
     navigate(`${link}`);
   }
 
-  const companies = [
+  const internships = [
     {
-      name: 'TechCorp',
+      title: 'Software Engineering Intern',
+      company: 'TechCorp',
       industry: 'Software Development',
       image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80'
     },
     {
-      name: 'DesignHub',
+      title: 'UI/UX Design Intern',
+      company: 'DesignHub',
       industry: 'UI/UX Design',
       image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80'
     },
     {
-      name: 'DataTech',
+      title: 'Data Analyst Intern',
+      company: 'DataTech',
       industry: 'Data Analytics',
       image: 'https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&q=80'
     }
@@ -37,12 +40,12 @@ const TopCompanies = () => {
           transition={{ duration: 0.4 }}
           className="text-center mb-12"
           >
-          <h2 className="text-3xl text-white font-bold mb-4">Top IT Companies</h2>
-          <p className="text-green-400">Partner with industry leaders</p>
+          <h2 className="text-3xl text-white font-bold mb-4">Top IT Internships</h2>
+          <p className="text-green-400">Kickstart your career</p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {companies.map((company, index) => (
+          {internships.map((internship, index) => (
             <motion.div 
               key={index} 
               initial={{ opacity: 0, y: 20 }}
@@ -53,17 +56,18 @@ const TopCompanies = () => {
               >
               <div className="relative h-48">
                 <img 
-                  src={company.image} 
-                  alt={company.name}
+                  src={internship.image} 
+                  alt={internship.title}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black-900 via-transparent"></div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{company.name}</h3>
-                <p className="text-white mb-4">{company.industry}</p>
-                <a href={`/company/${index + 1}`} className="text-green-400 hover:text-green-300 inline-flex items-center">
-                  View Profile <ArrowRight className="ml-2 h-4 w-4" />
+                <h3 className="text-xl font-bold mb-2">{internship.title}</h3>
+                <p className="text-white mb-2">{internship.company}</p>
+                <p className="text-white mb-4">{internship.industry}</p>
+                <a href={`/internships/${index + 1}`} className="text-green-400 hover:text-green-300 inline-flex items-center">
+                  View Details <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
             </motion.div>
@@ -76,9 +80,9 @@ const TopCompanies = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.4 }}
             className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-medium inline-flex items-center"
-            onClick={() => handleNavigate('/companies')}
+            onClick={() => handleNavigate('/internships')}
             >
-              View All Companies <ArrowRight className="ml-2 h-4 w-4" />
+              View All Internships <ArrowRight className="ml-2 h-4 w-4" />
           </motion.button>
         </div>
       </div>
@@ -86,4 +90,4 @@ const TopCompanies = () => {
   );
 };
 
-export default TopCompanies;
+export default TopInternships;

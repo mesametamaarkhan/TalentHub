@@ -28,12 +28,6 @@ const Navbar = () => {
               Gigs
             </a>
             <a
-              href="/companies"
-              className="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium text-white"
-            >
-              Companies
-            </a>
-            <a
               href="/internships"
               className="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium text-white"
             >
@@ -48,7 +42,7 @@ const Navbar = () => {
                 <Bell className="h-5 w-5" />
               </button>
               <button
-                onClick={() => navigate(`/f-profile/1`)}
+                onClick={() => navigate(`/profile/${JSON.parse(localStorage.getItem('user')).id}`)}
                 className="text-white hover:text-green-400 flex items-center justify-center"
               >
                 <User className="h-5 w-5" />
@@ -76,16 +70,10 @@ const Navbar = () => {
               Home
             </a>
             <a
-              href="/freelancers"
+              href="/gigs"
               className="hover:text-green-400 block px-3 py-2 rounded-md text-base font-medium text-white"
             >
-              Freelancers
-            </a>
-            <a
-              href="/companies"
-              className="hover:text-green-400 block px-3 py-2 rounded-md text-base font-medium text-white"
-            >
-              Companies
+              Gigs
             </a>
             <a
               href="/internships"
@@ -102,7 +90,7 @@ const Navbar = () => {
                 <Bell className="h-6 w-6" />
               </button>
               <button
-                onClick={() => navigate('/f-profile/1')}
+                onClick={() => navigate(`/profile/${JSON.parse(localStorage.getItem('user'))._id}`)}
                 className="text-white hover:text-green-400 flex items-center justify-center"
               >
                 <User className="h-6 w-6" />

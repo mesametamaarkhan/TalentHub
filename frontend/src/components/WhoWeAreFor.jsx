@@ -8,16 +8,16 @@ const WhoWeAreFor = () => {
       title: 'Freelancers',
       description: 'Build your portfolio and connect with global opportunities',
       image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&q=80',
-      link: '/freelancers'
+      link: '/gigs'
     },
     {
-      title: 'Companies',
+      title: 'Employers',
       description: 'Find top talent for your projects and grow your team',
       image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80',
       link: '/companies'
     },
     {
-      title: 'Internships',
+      title: 'Students',
       description: 'Kickstart your career with internship opportunities',
       image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80',
       link: '/internships'
