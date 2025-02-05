@@ -77,8 +77,7 @@ const ProfilePage = () => {
     console.log(formData.skills);
 
     let updatedSkills = formData.skills;
-
-    // Check if skills is a string (and not an array), then split it
+    
     if (typeof updatedSkills === 'string') {
       updatedSkills = updatedSkills.split(',').map((skill) => skill.trim()).filter(Boolean);
     }

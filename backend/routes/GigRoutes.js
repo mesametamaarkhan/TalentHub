@@ -28,7 +28,7 @@ router.post('/create-gig', authenticateToken, async (req, res) => {
         });
 
         await newGig.save();
-        res.status(200).json({ message: 'Gig created successfully' });
+        res.status(201).json({ message: 'Gig created successfully' });
     }
     catch(error) {
         res.status(500).json({ message: 'Server error', error});
