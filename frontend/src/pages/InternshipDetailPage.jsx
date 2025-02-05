@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { MapPin, Clock } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import ApplicationForm from '../components/ApplicationForm';
 
 const InternshipDetailPage = () => {
   const [internship, setInternship] = useState(null);
+  const [isApplying, setIsApplying] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -88,10 +90,21 @@ const InternshipDetailPage = () => {
           </div>
         )} */}
 
+        {/* Show the Application Form if isApplying is true */}
+        {isApplying && <ApplicationForm id={internship._id} type={'internship'} />}
+        
+        {/* Apply Button */}
+        <button
+          onClick={() => setIsApplying(!isApplying)}
+          className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center"
+        >
+          {isApplying ? 'Cancel Application' : 'Apply for this Internship'}
+        </button>
+
         {/* Back to Internships Button */}
         <button
           onClick={() => navigate('/internships')}
-          className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center"
+          className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 mt-4 rounded-lg transition-colors duration-300 flex items-center justify-center"
         >
           Back to Internships
         </button>

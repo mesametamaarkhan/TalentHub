@@ -5,6 +5,7 @@ import { PORT, mongoDBCon } from './config.js'
 import UserRoutes from './routes/UserRoutes.js';
 import GigRoutes from './routes/GigRoutes.js';
 import InternshipRoutes from './routes/InternshipRoutes.js';
+import ApplicationRoutes from './routes/ApplicationRoutes.js';
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(cors());
 app.use('/users', UserRoutes);
 app.use('/gigs', GigRoutes);
 app.use('/internships', InternshipRoutes);
+app.use('/applications', ApplicationRoutes);
 
 app.get('/', (req, res) => {
     console.log('Hello');

@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { Link as LinkIcon, Briefcase, MapPin, DollarSign } from 'lucide-react';
-import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { Link as LinkIcon, Briefcase, MapPin, DollarSign } from "lucide-react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import ApplicationForm from "../components/ApplicationForm"; // Import the ApplicationForm component
 
 const FreelancerDetailPage = () => {
   const [gig, setGig] = useState(null);
+  const [isApplying, setIsApplying] = useState(false); // State to toggle the application form
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchGigDetail = async () => {
       try {
-        const token = localStorage.getItem('accessToken');
-        console.log(id);
+        const token = localStorage.getItem("accessToken");
         const response = await axios.get(`http://localhost:8080/gigs/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -21,15 +22,13 @@ const FreelancerDetailPage = () => {
 
         if (response.status === 200) {
           setGig(response.data.gig);
-          console.log(gig);
-        } 
-        else {
-          console.error('Error fetching gig details');
-          navigate('/gigs');
+        } else {
+          console.error("Error fetching gig details");
+          navigate("/gigs");
         }
       } catch (error) {
-        console.error('Error fetching gig details:', error);
-        navigate('/gigs');
+        console.error("Error fetching gig details:", error);
+        navigate("/gigs");
       }
     };
 
@@ -91,10 +90,21 @@ const FreelancerDetailPage = () => {
           </div>
         )}
 
+        {/* Show the Application Form if isApplying is true */}
+        {isApplying && <ApplicationForm id={gig._id} type={"gig"} />}
+
+        {/* Apply Button */}
+        <button
+          onClick={() => setIsApplying(!isApplying)}
+          className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center"
+        >
+          {isApplying ? "Cancel Application" : "Apply for this Gig"}
+        </button>
+
         {/* Back to Gigs Button */}
         <button
-          onClick={() => navigate('/gigs')}
-          className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center"
+          onClick={() => navigate("/gigs")}
+          className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center mt-4"
         >
           Back to Gigs
         </button>

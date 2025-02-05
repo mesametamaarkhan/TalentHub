@@ -1,23 +1,19 @@
 import mongoose from 'mongoose';
-import { Internship } from './InternshipModel';
 
 const applicationSchema = mongoose.Schema({
-    applicationId: {
-        type: String,
-        required: true
-    },
     userId: {
-        type: String, //reference
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'users', 
         required: true
     },
     gigId: {
-        type: String, //reference
-        default: null,
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'gigs', 
         required: false
     },
     internshipId: {
-        type: String, //reference
-        default: null,
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'internships', 
         required: false
     },
     applicationDate: {
@@ -28,18 +24,10 @@ const applicationSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    coverLetter: {
-        type: String,
-        required: true
-    },
     resumeLink: {
         type: String,
         required: true
     },
-    motivationalStatement: {
-        type: String,
-        required: true
-    }
 });
 
 export const Application = mongoose.model('application', applicationSchema);
