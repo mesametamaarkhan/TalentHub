@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const applicationSchema = mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'users', 
+        ref: 'user', 
         required: true
     },
     gigId: {

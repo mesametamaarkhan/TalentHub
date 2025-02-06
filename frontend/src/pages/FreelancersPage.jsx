@@ -30,9 +30,11 @@ const GigsPage = () => {
         if (response.status === 200) {
           setGigs(response.data.gigs);
           setFilteredGigs(response.data.gigs);
-        } else if (response.status === 403) {
+        } 
+        else if (response.status === 403) {
           navigate('/login');
-        } else if (response.status === 404) {
+        }
+        else if (response.status === 404) {
           navigate('/');
         }
       } catch (error) {

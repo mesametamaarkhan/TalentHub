@@ -15,7 +15,7 @@ const gigSchema = mongoose.Schema({
     },
     employerId: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'users', 
+        ref: 'user', 
         required: true
     },
     budget: {
@@ -28,7 +28,13 @@ const gigSchema = mongoose.Schema({
     },
     assignedFreelancer: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'users', 
+        ref: 'user', 
+        default: null,
+        required: false
+    },
+    applicants: {
+        type: [mongoose.Schema.Types.ObjectId], 
+        ref: 'user', 
         default: null,
         required: false
     },

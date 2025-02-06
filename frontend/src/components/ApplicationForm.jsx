@@ -6,41 +6,7 @@ const ApplicationForm = ({ id, type }) => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
     
-        try {
-            const token = localStorage.getItem('accessToken');
-            const user = JSON.parse(localStorage.getItem('user'));
-
-            const response = await axios.post(
-                `http://localhost:8080/applications/${type}/${id}`, 
-                {
-                    gigId: type === 'gig' ? id : undefined,
-                    internshipId: type === 'internship' ? id : undefined,
-                    userId: user.id,
-                    resumeLink: resumeLink,
-                    status: 'pending',
-                    applicationDate: Date.now(),
-                },
-                {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                }
-            });
-
-            if (response.status === 200) {
-                setSuccess(true);
-                window.location.reload();
-            }
-            else if (response.status === 409) {
-                setError(`You have already applied to this gig, wait for the employer's response`);
-            }
-        } 
-        catch (error) {
-            setError('Failed to submit application. Please try again.');
-        }
-    };
 
     return (
         <div className="bg-black rounded-lg p-6 mb-8">

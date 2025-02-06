@@ -35,6 +35,37 @@ const FreelancerDetailPage = () => {
     fetchGigDetail();
   }, [id, navigate]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+        const token = localStorage.getItem('accessToken');
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        const response = await axios.put(
+            `http://localhost:8080/gigs/update-applicants/${id}`, 
+            {
+              userId: user.id
+            },
+            {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        });
+
+        if (response.status === 200) {
+            setSuccess(true);
+            window.location.reload();
+        }
+        else if (response.status === 409) {
+            setError(`You have already applied to this gig, wait for the employer's response`);
+        }
+    } 
+    catch (error) {
+        setError('Failed to submit application. Please try again.');
+    }
+};
+
   if (!gig) return <div>Loading...</div>;
 
   return (
@@ -95,7 +126,7 @@ const FreelancerDetailPage = () => {
 
         {/* Apply Button */}
         <button
-          onClick={() => setIsApplying(!isApplying)}
+          onClick={handleSubmit}
           className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center"
         >
           {isApplying ? "Cancel Application" : "Apply for this Gig"}
